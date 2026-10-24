@@ -1,0 +1,19 @@
+{
+  "name": "Struna: Run the Song",
+  "short_name": "Struna",
+  "description": "A free rhythm runner that builds every level from the song: jump, slide and kick on the beat, with your own music too.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#05070f",
+  "theme_color": "#05070f",
+  "categories": ["games", "music"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

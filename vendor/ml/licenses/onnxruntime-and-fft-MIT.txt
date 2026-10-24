@@ -1,0 +1,2 @@
+MIT, Copyright (c) Microsoft Corporation (onnxruntime-web 1.23.2)
+MIT, fft.js 4.0.4 by Fedor Indutny

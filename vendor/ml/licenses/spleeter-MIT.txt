@@ -1,0 +1,3 @@
+Spleeter (Deezer, 2019), MIT: https://github.com/deezer/spleeter
+The 2-stem vocals model as exported to ONNX (fp16) by sherpa-onnx (k2-fsa, Apache-2.0):
+https://github.com/k2-fsa/sherpa-onnx/releases/tag/source-separation-models

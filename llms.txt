@@ -1,0 +1,24 @@
+# Struna
+
+> Struna is a free rhythm runner that runs in the web browser (phone or PC). It listens to a song and builds the level from it: the world, the tempo and every obstacle, each placed on a beat. No sign-up, no download: https://struna.ai
+
+## What it is
+
+- A rhythm game and an endless-runner-style game in one: a stick figure runs, and an AI cursor called Struna drops obstacles in front of him in time with the music.
+- The player jumps, slides, kicks, grabs bars and rides lines over gaps, each on a beat. Pressing on the beat scores best; a streak multiplies the score.
+- The level comes from the song itself (procedural generation from beat tracking, onsets and the loudness of each bar): a calm song gives a calm world and an easy pace, a hard one a fast and wild run. The same song always gives the same level, so it can be learned.
+- Ten worlds (a city, a synthwave road, a forest, a desert, a space station, a rave, a volcano, the ocean, the arctic, a factory), picked by the song's mood; bosses, clones to fight, flights, shafts, mirrored and upside-down worlds.
+- Built-in songs, or the player's own music (mp3 and other audio files). The songs are analysed and played on the device; nothing is uploaded.
+- Made for players of any age, including children who cannot read yet: every press is shown by a round note with an arrow, no words needed.
+- In 13 languages: English, Russian, Ukrainian, German, Spanish, French, Italian, Portuguese, Polish, Turkish, Japanese, Korean, Chinese.
+
+## How to play
+
+- Phone held upright: swipe up to jump (and to grab a bar or a line), down to slide, forward to kick, back to kick a clone behind. Held sideways: each thumb has its half of the screen.
+- PC: the arrow keys or WASD; Shift for the overdrive.
+
+## Facts
+
+- Price: free.
+- Platform: any modern web browser (Chrome, Safari, Firefox, Edge), on Android, iOS, Windows, macOS, Linux; installable as an app.
+- URL: https://struna.ai

@@ -1,0 +1,4467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="boot-files" content="212" />
+    <meta name="sim-build" content="public" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#05070f" />
+    <title>Struna – a rhythm game that builds the level from any song</title>
+    <!-- what it is, for search engines, AI assistants and a link's preview (Reddit, Telegram, messengers) -->
+    <meta name="description" content="Struna is a free rhythm runner in the browser that builds every level from the song: jump, slide and kick on the beat. Play on a phone or a PC, with the built-in songs or your own music." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://struna.ai/" />
+    <link rel="alternate" hreflang="en" href="https://struna.ai/?lang=en" />
+    <link rel="alternate" hreflang="ru" href="https://struna.ai/?lang=ru" />
+    <link rel="alternate" hreflang="uk" href="https://struna.ai/?lang=uk" />
+    <link rel="alternate" hreflang="de" href="https://struna.ai/?lang=de" />
+    <link rel="alternate" hreflang="es" href="https://struna.ai/?lang=es" />
+    <link rel="alternate" hreflang="fr" href="https://struna.ai/?lang=fr" />
+    <link rel="alternate" hreflang="it" href="https://struna.ai/?lang=it" />
+    <link rel="alternate" hreflang="pt" href="https://struna.ai/?lang=pt" />
+    <link rel="alternate" hreflang="pl" href="https://struna.ai/?lang=pl" />
+    <link rel="alternate" hreflang="tr" href="https://struna.ai/?lang=tr" />
+    <link rel="alternate" hreflang="ja" href="https://struna.ai/?lang=ja" />
+    <link rel="alternate" hreflang="ko" href="https://struna.ai/?lang=ko" />
+    <link rel="alternate" hreflang="zh" href="https://struna.ai/?lang=zh" />
+    <link rel="alternate" hreflang="x-default" href="https://struna.ai/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://struna.ai/" />
+    <meta property="og:site_name" content="Struna" />
+    <meta property="og:title" content="Struna – the song builds the level" />
+    <meta property="og:description" content="A free rhythm runner in the browser. Every jump, slide and kick lands on the beat of the song, even your own." />
+    <meta property="og:image" content="https://struna.ai/icons/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Struna: a stick figure runs a neon city, obstacles and notes on the beats of a song" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Struna – the song builds the level" />
+    <meta name="twitter:description" content="A free rhythm runner in the browser. Every jump, slide and kick lands on the beat." />
+    <meta name="twitter:image" content="https://struna.ai/icons/og.jpg" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": ["VideoGame", "WebApplication"], "name": "Struna", "alternateName": "Struna: Run the Song", "url": "https://struna.ai/", "description": "Struna is a free rhythm runner in the browser that builds every level from the song: jump, slide and kick on the beat. Play on a phone or a PC, with the built-in songs or your own music.", "image": "https://struna.ai/icons/og.jpg", "genre": ["Rhythm game", "Runner", "Music game"], "gamePlatform": ["Web browser", "Android", "iOS", "Windows", "macOS"], "applicationCategory": "GameApplication", "operatingSystem": "Any (web browser)", "playMode": "SinglePlayer", "inLanguage": ["en", "ru", "uk", "de", "es", "fr", "it", "pt", "pl", "tr", "ja", "ko", "zh"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Struna", "url": "https://struna.ai/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Struna?", "acceptedAnswer": {"@type": "Answer", "text": "A rhythm runner in the browser. The game listens to a song (its beats, onsets and how loud each part is) and builds the level from it: the world, the tempo and every obstacle, each placed on a beat. An AI cursor called Struna drops the obstacles in front of you in time with the music."}}, {"@type": "Question", "name": "Is Struna free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is free, with no sign-up and no download: open struna.ai in a browser and play."}}, {"@type": "Question", "name": "Can I play with my own music?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Add your own songs (mp3 and other audio files) and the game makes a level out of each one. The same song always gives the same level, so it can be learned."}}, {"@type": "Question", "name": "Is my music uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your songs are analysed and played on your device, in the browser. Nothing is sent to a server."}}, {"@type": "Question", "name": "How do you play Struna?", "acceptedAnswer": {"@type": "Answer", "text": "On a phone: swipe up to jump (and to grab a bar or a line), down to slide, forward to kick, back to kick a clone behind you; held sideways, each thumb has its half. On a PC: the arrow keys or WASD. Press on the beat for the best score."}}]}</script>
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <!-- (added to an iPhone's home screen: full screen, the status bar over the picture) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Struna" />
+    <link rel="stylesheet" href="vendor/fonts/fonts.css" />
+    <!-- (deferred: the boot screen shows before it lands; the game's module runs after it all the same) -->
+    <script src="vendor/planck.min.js" defer></script>
+    <style>
+      /* the boot screen (before the scripts) */
+      #boot {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: #05070f;
+        color: #fff;
+        transition: opacity 0.35s;
+      }
+      #boot.gone {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #boot .logo {
+        font: 900 44px Unbounded, 'Arial Black', sans-serif;
+        letter-spacing: 0.02em;
+      }
+      #boot .logo b {
+        color: #ff3b5c;
+      }
+      #boot small {
+        font: 600 13px ui-monospace, Menlo, monospace;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      #bootbar {
+        height: 100%;
+        width: 0;
+        background: #ff3b5c;
+        transition: width 0.15s;
+      }
+      /* the page told in words where it is not run (noscript) */
+      .noscript {
+        max-width: 640px;
+        margin: 40px auto;
+        padding: 0 16px;
+        color: #fff;
+        font: 16px/1.5 system-ui, sans-serif;
+      }
+      :root {
+        color-scheme: dark;
+        --display: 'Unbounded', 'Arial Black', system-ui, sans-serif;
+        --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --bg: #05070f;
+        --fg: #f4f6ff;
+        --dim: #8a90ad;
+        --red: #ff1a2e;
+        --card: rgba(255, 255, 255, 0.06);
+        /* the mouse pointer is Struna's cursor (tools/cursors.mjs): white, red over what can be clicked; its tip the hot
+           spot; sharp on a sharp screen where the browser takes image-set */
+        --arrow: url(icons/cursor-32.png) 2 2, default;
+        --pointer: url(icons/cursor-on-32.png) 2 2, pointer;
+      }
+      @supports (cursor: image-set(url(icons/cursor-32.png) 1x) 2 2, auto) {
+        :root {
+          --arrow: image-set(url(icons/cursor-32.png) 1x, url(icons/cursor-64.png) 2x) 2 2, default;
+          --pointer: image-set(url(icons/cursor-on-32.png) 1x, url(icons/cursor-on-64.png) 2x) 2 2, pointer;
+        }
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body,
+      body * {
+        cursor: var(--arrow);
+      }
+      button,
+      a,
+      label,
+      select,
+      input[type='range'],
+      input[type='checkbox'] {
+        cursor: var(--pointer);
+      }
+      input[type='search'],
+      input[type='text'],
+      textarea {
+        cursor: text;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--mono);
+        overflow: hidden;
+        overscroll-behavior: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #cv {
+        position: fixed;
+        inset: 0;
+        touch-action: none;
+        display: block;
+      }
+      .screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+          max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+        background: radial-gradient(120% 80% at 50% 20%, #1a0610 0%, var(--bg) 60%);
+        overflow-y: auto;
+      }
+      /* (centred while it fits, scrolled from its top when it does not: a centred column taller than a phone held
+         sideways would lose its top above the screen) */
+      .screen > :first-child {
+        margin-top: auto;
+      }
+      .screen > :last-child {
+        margin-bottom: auto;
+      }
+      .screen[hidden] {
+        display: none;
+      }
+      /* (the player's own mouse is hidden while a song plays, the only pointer on screen the AI's; moved, it shows for a
+         moment, as over a video, so the pause and the full screen can be reached: main.js) */
+      body.playing:not(.mousing),
+      body.playing:not(.mousing) * {
+        cursor: none !important;
+      }
+      /* the bug report: its button always in a corner, its dialog over everything (and the pointer back for both) */
+      #bugbtn {
+        position: fixed;
+        right: max(10px, env(safe-area-inset-right));
+        bottom: max(10px, env(safe-area-inset-bottom));
+        z-index: 20;
+        font: 800 11px var(--mono);
+        letter-spacing: 0.08em;
+        padding: 6px 9px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 6px;
+        cursor: var(--pointer) !important;
+        opacity: 0.6;
+      }
+      #bugbtn:hover {
+        opacity: 1;
+      }
+      /* the pause: its button in the other corner while a song plays, its card over the held picture (the hero knocks on
+         the glass behind it) */
+      #pausebtn {
+        position: fixed;
+        left: 50%;
+        top: max(8px, env(safe-area-inset-top));
+        transform: translateX(-50%);
+        z-index: 20;
+        display: none;
+        width: 44px;
+        height: 44px;
+        font: 800 13px var(--mono);
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        cursor: var(--pointer) !important;
+        opacity: 0.55;
+        touch-action: manipulation;
+      }
+      /* the overdrive let loose by a finger: shown once it is ready (main.js), on the right edge where a thumb reaches it
+         (held upright: halfway up; held sideways: at the top, between the thumbs' halves) */
+      #odbtn {
+        position: fixed;
+        right: max(10px, env(safe-area-inset-right));
+        top: 42%;
+        z-index: 20;
+        width: 64px;
+        height: 64px;
+        padding: 0;
+        color: #1a1200;
+        background: radial-gradient(circle, #fff3a6 0%, #ffd84a 55%, #ff9f1a 100%);
+        border: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 18px rgba(255, 216, 74, 0.8);
+        cursor: var(--pointer) !important;
+        animation: odpulse 0.5s ease-in-out infinite alternate;
+        touch-action: none;
+      }
+      @media (orientation: landscape) {
+        #odbtn {
+          right: auto;
+          left: calc(50% + 34px);
+          top: max(8px, env(safe-area-inset-top));
+          width: 56px;
+          height: 56px;
+        }
+      }
+      .touchset small {
+        display: block;
+        color: var(--dim);
+        font-size: 11px;
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .touchset {
+          display: none !important;
+        }
+      }
+      /* the diagnosis on the loading screen (main.js) */
+      #loadtxt {
+        text-align: center;
+        line-height: 1.6;
+        max-width: 90vw;
+      }
+      #loadtxt .diag {
+        font: 900 22px var(--display);
+        color: var(--fg);
+      }
+
+      #rcredit {
+        color: #29e7ff;
+        font: 700 13px var(--mono);
+      }
+      /* a race on the player's own song, waiting for it */
+      .racebanner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: min(640px, 100%);
+        padding: 10px 14px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(255, 216, 74, 0.25), rgba(255, 79, 216, 0.2));
+        font: 700 13px var(--mono);
+      }
+      .racebanner[hidden] {
+        display: none;
+      }
+      .racebanner span {
+        flex: 1;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: calc(90px + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        z-index: 40;
+        max-width: 90vw;
+        padding: 10px 16px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font: 700 13px var(--mono);
+        color: #fff;
+      }
+      .toast[hidden] {
+        display: none;
+      }
+      /* the public build: nothing that needs the owner's computer */
+      .public #bugbtn,
+      .public #pbug,
+      .public #linkform {
+        display: none !important;
+      }
+      .langs {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .langs button {
+        min-height: 44px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: var(--card);
+        color: var(--fg);
+        font: 700 14px var(--mono);
+        cursor: var(--pointer);
+      }
+      .langs button.on {
+        background: var(--red);
+        border-color: var(--red);
+      }
+      #langsheet .sheet {
+        width: min(560px, 100%);
+      }
+      /* the songs screen (ui/select.js): a bar on top (the name, its tools), then the stage of the song picked and the
+         list. Held upright: the stage on top, the list under it, the play at the bottom in reach of the thumb. Held
+         sideways and on a computer: the stage on the left, the list on the right. */
+      #menu {
+        justify-content: flex-start;
+        gap: 0;
+        padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) 0
+          max(12px, env(safe-area-inset-left));
+        overflow: hidden;
+        height: 100dvh;
+      }
+      #menu > :first-child,
+      #menu > :last-child {
+        margin: 0;
+      }
+      .mtop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1200px, 100%);
+        flex: none;
+        padding-bottom: 8px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand .mascot {
+        gap: 6px;
+        margin: 0;
+      }
+      .brand .mascot i {
+        width: 22px;
+        height: 13px;
+      }
+      .brand .mascot b {
+        width: 7px;
+        height: 7px;
+        margin-left: -3.5px;
+      }
+      .brand .logo {
+        font-size: 26px;
+        margin: 0;
+      }
+      .tools {
+        display: flex;
+        gap: 4px;
+      }
+      .tools button {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-width: 44px;
+        height: 44px;
+        justify-content: center;
+        padding: 0 8px;
+        border-radius: 22px;
+        border: 0;
+        background: transparent;
+        color: var(--dim);
+        font: 800 12px var(--mono);
+        cursor: var(--pointer);
+      }
+      .tools button:hover,
+      .tools button:focus-visible {
+        color: var(--fg);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .tools svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pick {
+        flex: 1;
+        min-height: 0;
+        width: min(1200px, 100%);
+        display: grid;
+        grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+        gap: 18px;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+      }
+      /* the stage: the cover (pulsing to the preview: --pulse), what it is, the play */
+      .stage {
+        --h: 330;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+        min-width: 0;
+        padding: 14px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, hsl(var(--h) 60% 18% / 0.9), rgba(10, 12, 24, 0.9));
+        border: 1px solid hsl(var(--h) 80% 60% / 0.25);
+        box-shadow: 0 10px 50px hsl(var(--h) 90% 40% / 0.25);
+        transition:
+          background 0.4s,
+          border-color 0.4s;
+      }
+      .stage .art {
+        position: relative;
+        aspect-ratio: 1;
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        transform: scale(calc(1 + var(--pulse, 0) * 0.06));
+        box-shadow: 0 0 calc(var(--pulse, 0) * 60px) hsl(var(--h) 100% 60% / 0.6);
+      }
+      .stage .art .img,
+      .row .thumb,
+      .mhead .mthumb {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 48%, hsl(var(--h) 100% 72%) 0 18%, transparent 19%),
+          repeating-linear-gradient(to bottom, transparent 0 8px, rgba(0, 0, 0, 0.35) 8px 10px) 0 0 / 100% 55% no-repeat,
+          linear-gradient(to bottom, hsl(calc(var(--h) + 40) 70% 18%), hsl(var(--h) 80% 40%) 55%, #05070f 55%);
+        background-size: cover;
+        background-position: center;
+      }
+      .stage .art .img[data-art],
+      .row .thumb[data-art],
+      .mhead .mthumb[data-art] {
+        background-size: cover;
+      }
+      .stage .art .vis {
+        position: absolute;
+        inset: auto 0 0 0;
+        width: 100%;
+        height: 45%;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+      .stage .bigico {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle, hsl(var(--h) 80% 30%), #070912);
+      }
+      .stage .bigico .ico {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        font: 900 20px var(--display);
+        transform: scale(3);
+      }
+      .stage .about {
+        text-align: left;
+      }
+      .stage .title {
+        margin: 0;
+        text-align: left;
+        font: 900 clamp(18px, 2.4vw, 26px) var(--display);
+        line-height: 1.15;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .stage .artist {
+        margin: 2px 0 0;
+        color: var(--dim);
+        font: 600 14px var(--mono);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .fact {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 9px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.35);
+        font: 700 12px var(--mono);
+      }
+      .fact.energy i,
+      .fact.sleepy i {
+        width: 12px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--c, #ff1a2e);
+        box-shadow: 0 0 6px var(--c, #ff1a2e);
+      }
+      .fact.sleepy i {
+        height: 2px;
+        background: #8a90ad;
+        box-shadow: none;
+      }
+      .fact .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 12px;
+        margin-left: 4px;
+      }
+      .fact .bars s {
+        width: 3px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .fact .bars s:nth-child(1) {
+        height: 40%;
+      }
+      .fact .bars s:nth-child(2) {
+        height: 55%;
+      }
+      .fact .bars s:nth-child(3) {
+        height: 70%;
+      }
+      .fact .bars s:nth-child(4) {
+        height: 85%;
+      }
+      .fact .bars s.on {
+        background: var(--c);
+      }
+      .stars {
+        display: inline-flex;
+        gap: 1px;
+      }
+      .stars svg {
+        width: 14px;
+        height: 14px;
+        fill: rgba(255, 255, 255, 0.18);
+      }
+      .stars svg.on {
+        fill: #ffe14d;
+      }
+      .stage .credit {
+        display: inline-block;
+        margin-top: 6px;
+        color: #29e7ff;
+        font: 700 12px var(--mono);
+      }
+      .stage .act {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+      }
+      .stage .credit[hidden] {
+        display: none;
+      }
+      /* the modifiers: chips that light up, each with what it adds to the score; the play says the sum */
+      .stage .mods {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .stage .mods[hidden],
+      .stage .go .mult:empty {
+        display: none;
+      }
+      .stage .mods button {
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: #171a2b;
+        color: var(--fg);
+        font: 700 11px var(--mono);
+      }
+      .stage .mods button small {
+        margin-left: 4px;
+        color: #ffe14d;
+      }
+      .stage .mods button.on {
+        background: #ff4fd8;
+        border-color: #ff4fd8;
+        color: #000;
+      }
+      .stage .mods button.on small {
+        color: #000;
+      }
+      .stage .go .mult {
+        padding: 2px 8px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        font: 800 14px var(--mono);
+      }
+      .stage .go {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        min-height: 64px;
+        border: 0;
+        border-radius: 20px;
+        background: radial-gradient(circle at 30% 20%, #ff6a78, #ff1a2e 55%, #b0001a);
+        color: #fff;
+        font: 900 22px var(--display);
+        text-transform: uppercase;
+        cursor: var(--pointer);
+        box-shadow: 0 8px 30px rgba(255, 26, 46, 0.5);
+        animation: gobeat 0.6s ease-in-out infinite alternate;
+      }
+      .stage .go .tri {
+        width: 0;
+        height: 0;
+        border-left: 20px solid #fff;
+        border-top: 13px solid transparent;
+        border-bottom: 13px solid transparent;
+      }
+      @keyframes gobeat {
+        to {
+          box-shadow: 0 8px 44px rgba(255, 26, 46, 0.85);
+        }
+      }
+      /* the list: a search and a file over it, genres, then the songs, each a row */
+      .library {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 0;
+        min-width: 0;
+      }
+      .find {
+        display: flex;
+        gap: 8px;
+      }
+      #songsfind,
+      #listfind {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px;
+        min-height: 48px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      #songsfind.busy {
+        border-color: #29e7ff;
+      }
+      #songsfind svg,
+      #listfind svg,
+      .mine svg {
+        width: 22px;
+        height: 22px;
+        flex: none;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        color: var(--dim);
+      }
+      #songsq,
+      #listq {
+        flex: 1;
+        min-width: 0;
+        border: 0;
+        background: none;
+        color: var(--fg);
+        font: 600 15px var(--mono);
+        outline: none;
+      }
+      /* the player's own songs: a lit, dashed zone of its own under the search (files dropped on it, or anywhere) */
+      .mine {
+        display: flex;
+        gap: 8px;
+        flex: none;
+      }
+      #songsadd {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 16px;
+        min-height: 56px;
+        border-radius: 18px;
+        border: 2px dashed #29e7ff;
+        background: linear-gradient(90deg, rgba(41, 231, 255, 0.14), rgba(255, 79, 216, 0.12));
+        color: var(--fg);
+        text-align: left;
+        cursor: var(--pointer);
+        transition:
+          transform 0.15s,
+          background 0.15s;
+      }
+      #songsadd:hover,
+      body.dropping #songsadd {
+        background: linear-gradient(90deg, rgba(41, 231, 255, 0.3), rgba(255, 79, 216, 0.26));
+        transform: scale(1.01);
+      }
+      body.dropping #songsadd {
+        border-style: solid;
+        box-shadow: 0 0 30px rgba(41, 231, 255, 0.5);
+      }
+      .mine svg {
+        width: 28px;
+        height: 28px;
+        color: #29e7ff;
+      }
+      .mine .mt {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .mine .mt b {
+        font: 900 15px var(--display);
+      }
+      .mine .mt small {
+        color: var(--dim);
+        font: 600 12px var(--mono);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .mine .plus {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #29e7ff;
+        color: #000;
+        font: 900 24px/1 var(--display);
+        font-style: normal;
+      }
+      #songsdir {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 56px;
+        padding: 0;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--fg);
+        font: 700 13px var(--mono);
+        cursor: var(--pointer);
+      }
+      #songsdir svg {
+        width: 26px;
+        height: 26px;
+        fill: none;
+        stroke: #29e7ff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      /* (a computer: drop it here, and a folder; a phone: from the phone) */
+      @media (hover: hover) and (pointer: fine) {
+        .mine .ph {
+          display: none;
+        }
+      }
+      @media (hover: none), (pointer: coarse) {
+        .mine .pc {
+          display: none;
+        }
+      }
+      .chips {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        flex: none;
+      }
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+      .chips button {
+        flex: none;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--fg);
+        font: 700 13px var(--mono);
+        cursor: var(--pointer);
+      }
+      .chips button.on {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+      }
+      .rows {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-right: 4px;
+        overscroll-behavior: contain;
+      }
+      .row {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 60px;
+        padding: 6px 10px 6px 6px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--fg);
+        text-align: left;
+        cursor: var(--pointer);
+        -webkit-tap-highlight-color: transparent;
+      }
+      .row:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .row.on {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .row .thumb {
+        position: relative;
+        inset: auto;
+        flex: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+      }
+      .row .ico {
+        flex: none;
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        font-style: normal;
+        font: 900 20px var(--display);
+      }
+      .ico.learn {
+        background: linear-gradient(135deg, #ff1a2e, #ff4fd8);
+        color: #fff;
+      }
+      .ico.sun {
+        background: radial-gradient(circle, #ffd84a 0 28%, rgba(255, 216, 74, 0.25) 30% 60%, transparent 62%), #2a1a08;
+      }
+      .ico.three {
+        background:
+          linear-gradient(90deg, #5ee7ff 0 26%, transparent 26% 37%, #5ee7ff 37% 63%, transparent 63% 74%, #5ee7ff 74%)
+            center / 70% 40% no-repeat,
+          #08202a;
+      }
+      .row .txt {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .row .txt b {
+        font: 800 14px var(--display);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .row .txt small {
+        color: var(--dim);
+        font: 600 12px var(--mono);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .row .new {
+        color: #ffe14d;
+        font-size: 16px;
+        text-shadow: 0 0 8px #ffe14d;
+      }
+      /* (the song being heard: three bars dancing) */
+      .row .eq {
+        display: none;
+        align-items: flex-end;
+        gap: 2px;
+        height: 16px;
+      }
+      .row.playing .eq {
+        display: flex;
+      }
+      .row .eq s {
+        width: 3px;
+        height: 100%;
+        background: #29e7ff;
+        animation: eq 0.5s ease-in-out infinite alternate;
+      }
+      .row .eq s:nth-child(2) {
+        animation-delay: -0.2s;
+      }
+      .row .eq s:nth-child(3) {
+        animation-delay: -0.35s;
+      }
+      @keyframes eq {
+        from {
+          height: 25%;
+        }
+        to {
+          height: 100%;
+        }
+      }
+      .rowhead {
+        margin: 12px 0 4px 8px;
+        color: var(--dim);
+        font: 800 11px var(--display);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      /* held upright: the stage a band on top (the cover beside its words), the list under it, the play at the bottom */
+      @media (max-width: 760px) and (orientation: portrait) {
+        .pick {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-rows: auto minmax(0, 1fr);
+          gap: 10px;
+          padding-bottom: 0;
+        }
+        .stage {
+          display: grid;
+          grid-template-columns: 30vw minmax(0, 1fr);
+          grid-template-areas: 'art about' 'mods mods' 'act act';
+          gap: 10px 14px;
+          padding: 10px;
+        }
+        .stage .art {
+          grid-area: art;
+        }
+        /* (the modifiers one row under the cover, scrolled sideways) */
+        .stage .mods {
+          grid-area: mods;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+        .stage .mods button {
+          flex: none;
+          white-space: nowrap;
+        }
+        .stage .about {
+          grid-area: about;
+          min-width: 0;
+          align-self: center;
+        }
+        .stage .act {
+          grid-area: act;
+          position: fixed;
+          left: max(12px, env(safe-area-inset-left));
+          right: max(12px, env(safe-area-inset-right));
+          bottom: max(12px, env(safe-area-inset-bottom));
+          z-index: 5;
+        }
+        .rows {
+          padding-bottom: calc(96px + env(safe-area-inset-bottom));
+        }
+        .brand .logo {
+          font-size: 22px;
+        }
+        .tools {
+          gap: 0;
+        }
+        .tools button {
+          min-width: 40px;
+          padding: 0 6px;
+        }
+      }
+      /* (a narrow phone: the name without the eyes, so every tool fits beside it; the narrowest also without the
+         language's letters and with a smaller name) */
+      @media (max-width: 420px) {
+        .brand .mascot {
+          display: none;
+        }
+      }
+      @media (max-width: 360px) {
+        .langbtn span {
+          display: none;
+        }
+        .brand .logo {
+          font-size: 19px;
+        }
+        .tools button {
+          min-width: 38px;
+          padding: 0 4px;
+        }
+      }
+      /* a phone held sideways: little height, the stage narrow */
+      @media (max-height: 520px) and (orientation: landscape) {
+        .pick {
+          grid-template-columns: minmax(230px, 32%) minmax(0, 1fr);
+        }
+        .stage {
+          padding: 10px;
+          gap: 8px;
+        }
+        .stage .art {
+          width: auto;
+          height: min(34vh, 100%);
+          align-self: center;
+        }
+        .stage .go {
+          min-height: 52px;
+          gap: 8px;
+          font-size: 18px;
+        }
+        /* (the player's own songs and play all side by side on top, the tabs under them, then what a tab has over its
+           list (a search, genres, an artist, the playlists), the list taking the rest of the height) */
+        .library {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-rows: auto auto auto auto minmax(0, 1fr);
+          gap: 8px;
+        }
+        .library > * {
+          grid-column: 1 / -1;
+        }
+        .library > .mine {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        .library > .listbar {
+          grid-column: 2;
+          grid-row: 1;
+          align-self: center;
+        }
+        .library > .tabs {
+          grid-row: 2;
+        }
+        .library > .rows {
+          grid-row: 5;
+        }
+        #listcount {
+          display: none;
+        }
+        .stage .art {
+          width: min(40%, 120px);
+          height: auto;
+          align-self: flex-start;
+        }
+        .stage .art .pv {
+          width: 30px;
+          height: 30px;
+          right: 4px;
+          bottom: 4px;
+        }
+        .stage .art .pv svg {
+          width: 16px;
+          height: 16px;
+        }
+        #songsadd {
+          min-height: 48px;
+          padding: 4px 10px;
+          gap: 8px;
+        }
+        /* (a narrower one: shuffle its picture only, so the player's own songs keep room for their words) */
+        @media (max-width: 860px) {
+          #shuffle span {
+            display: none;
+          }
+          .mine .mt b {
+            white-space: nowrap;
+          }
+        }
+        /* (a very short one: the cover smaller still) */
+        @media (max-height: 380px) {
+          .stage .art {
+            width: min(30%, 84px);
+          }
+        }
+        /* (the modifiers one row, scrolled sideways: play stays on the screen) */
+        .stage .mods {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+        .stage .mods::-webkit-scrollbar {
+          display: none;
+        }
+        .stage .mods button {
+          flex: none;
+          white-space: nowrap;
+        }
+        .mine .mt small {
+          display: none;
+        }
+        .mine .plus {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      /* the count back in after a pause (main.js) */
+      #count {
+        position: fixed;
+        inset: 0;
+        z-index: 24;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 900 96px var(--display);
+        color: #fff;
+        text-shadow: 0 0 24px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+      }
+      #count[hidden] {
+        display: none;
+      }
+      /* its mark a bolt, the one beside the charge bar: no word to read or to overflow it in any language */
+      /* the buttons (settings: buttons; ui/pads.js): round, each where the player put it (its place and size written by
+         pads.js), see-through as they set it so the run shows through; lit the moment a finger lands */
+      #pads {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+      }
+      body.playing.pads #pads,
+      body.padedit #pads {
+        display: block;
+      }
+      #pads b {
+        --c: #fff;
+        --o: 0.5;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 2.5px solid var(--c);
+        background: rgba(0, 0, 0, 0.12);
+        opacity: var(--o);
+      }
+      #pads b.down {
+        opacity: max(var(--o), 0.9);
+        background: color-mix(in srgb, var(--c) 50%, transparent);
+        box-shadow: 0 0 22px var(--c);
+        transform: scale(0.94);
+      }
+      #pads svg {
+        width: 46%;
+        height: 46%;
+        fill: none;
+        stroke: var(--c);
+        stroke-width: 0.24;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #pads b.down svg {
+        stroke: #fff;
+      }
+      /* the layout editor (ui/pads-edit.js): the buttons take fingers, the one picked ringed; its tools in a card at the
+         top, over a sketch of the run (or the run itself, from the pause) */
+      body.padedit #pads {
+        z-index: 41;
+      }
+      body.padedit #pads b {
+        pointer-events: auto;
+        touch-action: none;
+        cursor: grab;
+        opacity: max(var(--o), 0.35);
+      }
+      body.padedit #pads b.sel {
+        outline: 2px dashed #fff;
+        outline-offset: 5px;
+      }
+      #padedit {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background: rgba(5, 2, 10, 0.55);
+        touch-action: none;
+      }
+      #padedit[hidden] {
+        display: none;
+      }
+      #peguide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #peguide[hidden] {
+        display: none;
+      }
+      .petools {
+        position: absolute;
+        left: 50%;
+        top: max(14px, env(safe-area-inset-top));
+        transform: translateX(-50%);
+        width: min(340px, calc(100vw - 32px));
+        box-sizing: border-box;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(12, 6, 20, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        font: 600 13px var(--mono);
+        display: grid;
+        gap: 8px;
+      }
+      .petools .pehead {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 800;
+      }
+      .petools .pehead span {
+        color: var(--dim);
+        font-weight: 600;
+      }
+      .petools small {
+        color: var(--dim);
+      }
+      .petools label {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        align-items: center;
+      }
+      .petools .pebtns {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+      .petools .pebtns button {
+        font: 800 13px var(--mono);
+        padding: 9px 16px;
+        border-radius: 999px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .petools .pebtns #pedone {
+        background: var(--red, #ff1f3d);
+        border-color: transparent;
+      }
+      /* held sideways: the card narrower, a single row of sliders */
+      @media (orientation: landscape) {
+        .petools {
+          width: min(420px, calc(100vw - 260px));
+          padding: 8px 12px;
+          gap: 4px;
+        }
+      }
+      #odbtn svg {
+        width: 58%;
+        height: 58%;
+        display: block;
+        margin: auto;
+        fill: #1a1200;
+        stroke: #fff3a6;
+        stroke-width: 0.06;
+        stroke-linejoin: round;
+      }
+      #odbtn[hidden] {
+        display: none;
+      }
+      @keyframes odpulse {
+        to {
+          transform: scale(1.1);
+          box-shadow: 0 0 30px rgba(255, 216, 74, 1);
+        }
+      }
+      /* a phone: the bug report is in the pause card, not under a thumb */
+      @media (pointer: coarse) {
+        body.playing #bugbtn {
+          display: none;
+        }
+      }
+      body.playing #pausebtn {
+        display: block;
+      }
+      .pause,
+      .pause * {
+        cursor: auto !important;
+      }
+      .pause button {
+        cursor: var(--pointer) !important;
+      }
+      .report {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .report[hidden] {
+        display: none;
+      }
+      .report,
+      .report *,
+      body.playing .report,
+      body.playing .report * {
+        cursor: auto !important;
+        user-select: text;
+      }
+      .report-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: min(560px, 100%);
+        max-height: 100%;
+        overflow: auto;
+        padding: 16px;
+        background: #12090d;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        font-family: var(--mono);
+      }
+      .report-card header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      body.playing .report button,
+      body.playing #bugbtn,
+      .report button {
+        cursor: var(--pointer) !important;
+      }
+      .report-card header button {
+        background: none;
+        border: 0;
+        color: #fff;
+        font-size: 22px;
+        cursor: var(--pointer) !important;
+      }
+      .report-card canvas {
+        width: 100%;
+        border-radius: 8px;
+        cursor: crosshair !important;
+      }
+      .report-card textarea {
+        font: 14px var(--mono);
+        color: #fff;
+        background: #000;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 8px;
+        resize: vertical;
+      }
+      .report-card small {
+        opacity: 0.7;
+      }
+      .report-card output {
+        word-break: break-all;
+        font-size: 12px;
+      }
+      #game {
+        background: none;
+        pointer-events: none;
+      }
+      /* (the simulation's scanlines over the picture: the page's, so drawing them costs the game nothing) */
+      #game::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0 1px, transparent 1px 3px);
+      }
+      .logo {
+        font-family: var(--display);
+        font-weight: 900;
+        font-size: clamp(40px, 12vw, 64px);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin: 0 0 4px;
+      }
+      .logo b {
+        color: var(--red);
+        text-shadow: 0 0 18px var(--red);
+      }
+      .tag {
+        color: var(--dim);
+        margin: 0 0 22px;
+        text-align: center;
+        font-size: 15px;
+      }
+      /* the controls picked while the first song loads (main.js pickControls): two big cards, the song waits for one */
+      .ctlpick {
+        display: grid;
+        gap: 12px;
+        width: min(460px, 100%);
+        margin-top: 18px;
+        text-align: center;
+      }
+      .ctlpick[hidden] {
+        display: none;
+      }
+      .ctlpick h3 {
+        margin: 0;
+        font: 900 20px var(--display);
+      }
+      .ctlpick > small {
+        color: var(--dim);
+        font-size: 12px;
+      }
+      .ctlopts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .ctlopts button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 18px 10px 14px;
+        border-radius: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.18);
+        background: var(--card);
+        color: var(--fg);
+        font: inherit;
+        touch-action: manipulation;
+      }
+      .ctlopts button:active {
+        border-color: var(--red);
+        background: var(--red);
+      }
+      .ctlopts svg {
+        width: 44px;
+        height: 44px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .ctlopts b {
+        font: 900 17px var(--display);
+      }
+      .ctlopts small {
+        color: var(--dim);
+        font-size: 11px;
+        line-height: 1.3;
+      }
+      @media (max-height: 520px) and (orientation: landscape) {
+        .ctlpick {
+          margin-top: 8px;
+          gap: 8px;
+        }
+        .ctlopts button {
+          padding: 10px;
+        }
+        .ctlopts svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
+      .eyes {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .eyes i {
+        width: 26px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 16px var(--red);
+        animation: blink 4s infinite;
+      }
+      @keyframes blink {
+        0%,
+        92%,
+        100% {
+          transform: scaleY(1);
+        }
+        95% {
+          transform: scaleY(0.1);
+        }
+      }
+
+      /* the mascot: the AI's two eyes over the name, their pupils looking down at the big play (a child follows a gaze),
+         blinking now and then */
+      .mascot {
+        display: flex;
+        gap: 18px;
+        margin-bottom: 6px;
+      }
+      .mascot i {
+        position: relative;
+        width: 38px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 18px var(--red);
+        animation: blink 4s infinite;
+        overflow: hidden;
+      }
+      .mascot b {
+        position: absolute;
+        left: 50%;
+        top: 58%;
+        width: 12px;
+        height: 12px;
+        margin-left: -6px;
+        border-radius: 50%;
+        background: #1a0005;
+        animation: look 6s ease-in-out infinite;
+      }
+      @keyframes look {
+        0%,
+        60%,
+        100% {
+          transform: translate(0, 0);
+        }
+        70%,
+        80% {
+          transform: translate(-6px, -4px);
+        }
+        88% {
+          transform: translate(6px, -4px);
+        }
+      }
+      /* a phone held sideways: the name smaller, the songs sooner in view */
+      @media (max-height: 520px) {
+        .mascot i {
+          width: 26px;
+          height: 15px;
+        }
+        .mascot b {
+          width: 8px;
+          height: 8px;
+          margin-left: -4px;
+        }
+      }
+      @keyframes beat {
+        to {
+          transform: scale(1.06);
+        }
+      }
+      @keyframes halo {
+        from {
+          transform: scale(0.9);
+          opacity: 1;
+        }
+        to {
+          transform: scale(1.3);
+          opacity: 0;
+        }
+      }
+      @keyframes hop {
+        50% {
+          transform: translateY(-5px) rotate(12deg);
+        }
+      }
+      /* the grown-ups' corner */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 26;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .overlay[hidden] {
+        display: none;
+      }
+      .overlay .sheet {
+        position: relative;
+        width: min(420px, 100%);
+        padding: 20px;
+        border-radius: 18px;
+        background: #12090d;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+      }
+      .overlay .x {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        background: none;
+        color: #fff;
+        font-size: 28px;
+        cursor: var(--pointer);
+      }
+      .gbtns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 26px 0 14px;
+      }
+      .gbtns button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 4px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: var(--card);
+        color: var(--fg);
+        font: 600 11px var(--mono);
+        cursor: var(--pointer);
+      }
+      .gbtns button[hidden] {
+        display: none;
+      }
+      .gbtns svg,
+      #linkform svg {
+        width: 28px;
+        height: 28px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #linkform {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--dim);
+      }
+      #linkform input {
+        flex: 1;
+        min-width: 0;
+      }
+      @keyframes learnpulse {
+        to {
+          transform: scale(1.03);
+        }
+      }
+      /* the sheet over the songs screen: the trophies, the story's logs (ui/songs.js) */
+      #panel {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 16px;
+      }
+      #panel[hidden] {
+        display: none;
+      }
+      #panel .sheet {
+        position: relative;
+        width: min(440px, 100%);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 20px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #0b0e1a;
+      }
+      #panel .sheet.wide {
+        width: min(680px, 100%);
+      }
+      #panel h3 {
+        font: 800 20px var(--display);
+        margin: 0 30px 4px 0;
+      }
+      #panel .a,
+      #panel .k,
+      #panel .marks {
+        color: var(--dim);
+        font-size: 13px;
+        margin: 4px 0;
+        line-height: 1.6;
+      }
+      #panel .k b {
+        color: var(--fg);
+      }
+      #panel .x {
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        background: none;
+        border: 0;
+        color: var(--fg);
+        font-size: 24px;
+        cursor: pointer;
+      }
+      #panel .btn.main {
+        width: 100%;
+        margin-top: 8px;
+      }
+      .doors .door small,
+      .perk small {
+        display: block;
+        color: var(--dim);
+        font-size: 10px;
+        font-weight: 400;
+      }
+      .trophy {
+        margin: 10px 0;
+        padding: 14px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, oklch(0.35 0.15 var(--h)), oklch(0.15 0.08 calc(var(--h) + 60)));
+        border: 1px solid oklch(0.75 0.15 var(--h));
+      }
+      .trophy b {
+        display: block;
+        font: 800 14px var(--display);
+      }
+      .trophy small {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 11px;
+      }
+      .cards2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+      }
+      .logs p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 8px 0;
+      }
+      .logs p b {
+        color: #ff4fd8;
+        margin-right: 6px;
+      }
+      .logs .lockd {
+        color: var(--dim);
+      }
+      #rsay {
+        color: #ff4fd8;
+        font-size: 13px;
+        margin: 6px 0;
+      }
+      #rnews p {
+        margin: 3px 0;
+        color: #ffd84a;
+        font: 700 12px var(--mono);
+      }
+      #rperks {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin: 8px 0;
+        max-width: 640px;
+      }
+      #rperks .setend {
+        width: 100%;
+        text-align: center;
+        color: #ffe14d;
+        font-weight: 700;
+      }
+      .perk {
+        max-width: 200px;
+      }
+      #tracks {
+        width: min(420px, 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .track {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        background: var(--card);
+        color: var(--fg);
+        font: inherit;
+        cursor: var(--pointer);
+        text-align: left;
+        position: relative;
+      }
+      .track:active {
+        transform: scale(0.98);
+      }
+      .track .t {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 17px;
+      }
+      .track .a {
+        color: var(--dim);
+        font-size: 13px;
+      }
+      .track[data-best]::after {
+        content: 'best ' attr(data-best);
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffe14d;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .own {
+        width: min(420px, 100%);
+        margin-top: 10px;
+        padding: 14px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        text-align: center;
+        color: var(--fg);
+        cursor: var(--pointer);
+        font-weight: 700;
+      }
+      .own input {
+        display: none;
+      }
+      .link {
+        display: flex;
+        gap: 8px;
+        width: min(420px, 100%);
+        margin-top: 10px;
+      }
+      .link input {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--fg);
+        font: inherit;
+      }
+      .link input::placeholder {
+        color: var(--dim);
+      }
+      .own small {
+        display: block;
+        color: var(--dim);
+        font-weight: 400;
+        margin-top: 2px;
+      }
+      .how {
+        color: var(--dim);
+        font-size: 13px;
+        margin-top: 16px;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .how.keys {
+        display: none;
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .how.keys {
+          display: block;
+        }
+        .how.touch {
+          display: none;
+        }
+      }
+      .how b {
+        color: var(--fg);
+      }
+      .calib {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--dim);
+        font-size: 13px;
+      }
+      .calib button.wide {
+        width: auto;
+        padding: 0 12px;
+        border-radius: 22px;
+        font-size: 13px;
+      }
+      .calib button {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: var(--card);
+        color: var(--fg);
+        font-size: 18px;
+      }
+      .bar {
+        width: min(280px, 80%);
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        margin-top: 14px;
+      }
+      #loadbar {
+        height: 100%;
+        width: 0;
+        background: var(--red);
+        transition: width 0.1s;
+      }
+      #rtitle {
+        font-family: var(--display);
+        text-wrap: balance;
+        text-align: center;
+        font-size: clamp(36px, 11vw, 56px);
+        font-weight: 900;
+        margin: 0;
+      }
+      #rsub {
+        color: var(--dim);
+        margin: 4px 0 14px;
+      }
+      #rscore {
+        font-family: var(--display);
+        font-variant-numeric: tabular-nums;
+        font-size: 44px;
+        font-weight: 900;
+        color: #ffe14d;
+      }
+      #rstats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        margin: 10px 0;
+      }
+      #rstats .stat {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font: 800 18px var(--display);
+      }
+      #rstats canvas {
+        width: 28px;
+        height: 28px;
+      }
+      .btn:focus-visible,
+      .track:focus-visible,
+      .calib button:focus-visible {
+        outline: 2px solid var(--red);
+        outline-offset: 2px;
+      }
+      .btn {
+        padding: 14px 26px;
+        border-radius: 999px;
+        border: none;
+        font: inherit;
+        font-weight: 800;
+        font-size: 16px;
+        cursor: var(--pointer);
+      }
+      .btn.main {
+        background: var(--red);
+        color: #fff;
+        box-shadow: 0 0 24px rgba(255, 26, 46, 0.5);
+      }
+      .btn.ghost {
+        background: var(--card);
+        color: var(--fg);
+      }
+      .btn.small {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+      .btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .title {
+        font-family: var(--display);
+        font-size: clamp(28px, 8vw, 40px);
+        margin: 0 0 6px;
+        text-wrap: balance;
+        text-align: center;
+      }
+      .btn.big {
+        font-size: 20px;
+        padding: 16px 34px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: min(380px, 100%);
+        margin: 10px 0 18px;
+      }
+      .form label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-weight: 700;
+      }
+      /* a checkbox beside its words */
+      .form label.check {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 10px;
+        row-gap: 2px;
+        align-items: center;
+      }
+      .form label.check small {
+        grid-column: 2;
+      }
+      .form label.check input {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--red);
+      }
+      .form label small {
+        color: var(--dim);
+        font-weight: 400;
+      }
+      .form input[type='range'] {
+        accent-color: var(--red);
+        width: 100%;
+      }
+      /* the settings (index.html #settings): cards of their own, a heading each; held sideways two columns; done held at
+         the bottom of the screen, in reach whatever is scrolled */
+      .sets {
+        display: grid;
+        gap: 14px;
+        width: min(460px, 100%);
+        margin: 6px 0 12px;
+      }
+      .sets > section {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .sets h3 {
+        margin: 0;
+        font: 800 12px var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+      .sets label,
+      .sets .row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .sets .seg {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .sets > section > .btn {
+        width: 100%;
+      }
+      .sets label small,
+      .sets .row small,
+      .sets > section > small {
+        color: var(--dim);
+        font-weight: 400;
+        font-size: 12px;
+      }
+      .sets label.check {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 10px;
+        row-gap: 2px;
+        align-items: center;
+      }
+      .sets label.check small {
+        grid-column: 2;
+      }
+      .sets label.check input {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--red);
+      }
+      .sets input[type='range'] {
+        accent-color: var(--red);
+        width: 100%;
+      }
+      .sets .calib {
+        margin: 0;
+      }
+      .sets .langs {
+        margin: 0;
+      }
+      .sets .more:not(:has(#install:not([hidden]), #iosinstall:not([hidden]))) {
+        display: none;
+      }
+      /* the touch schemes as four cards, a picture of each */
+      .seg.schemes {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 0;
+        background: none;
+        border-radius: 0;
+      }
+      .seg.schemes button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 4px 10px;
+        border-radius: 14px;
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: 12px;
+        line-height: 1.15;
+      }
+      .seg.schemes svg {
+        width: 30px;
+        height: 30px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .seg.schemes button.on {
+        border-color: var(--red);
+      }
+      .setsdone {
+        position: sticky;
+        bottom: calc(-1 * max(16px, env(safe-area-inset-bottom)));
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 14px 0 max(16px, env(safe-area-inset-bottom));
+        background: linear-gradient(transparent, var(--bg) 40%);
+      }
+      @media (orientation: landscape) and (min-width: 640px) {
+        #settings > h2.title {
+          font-size: 30px !important;
+          margin: 0 0 4px !important;
+        }
+        .sets {
+          width: min(920px, 100%);
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+      }
+      .seg {
+        display: flex;
+        border-radius: 999px;
+        background: var(--card);
+        padding: 4px;
+      }
+      .seg button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 999px;
+        background: none;
+        color: var(--fg);
+        font: inherit;
+        font-weight: 700;
+        cursor: var(--pointer);
+      }
+      .seg button.on {
+        background: var(--red);
+      }
+      .eyes.big i {
+        width: 52px;
+        height: 28px;
+        animation: none;
+        transition: transform 0.06s;
+      }
+      .eyes.big.flash i {
+        transform: scale(1.35);
+        box-shadow: 0 0 40px var(--red);
+      }
+      #cstatus {
+        color: var(--dim);
+        min-height: 1.4em;
+      }
+      #rrank {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 14px;
+        font-family: inherit;
+      }
+      #rrank b {
+        font-size: 64px;
+        line-height: 1;
+        font-weight: 900;
+      }
+      #rrank small {
+        font-size: 18px;
+        opacity: 0.85;
+      }
+      #rstars {
+        font-size: 34px;
+        letter-spacing: 6px;
+        color: #ffe14d;
+        text-shadow: 0 0 16px rgba(255, 225, 77, 0.5);
+      }
+      #rgraph {
+        width: min(420px, 100%);
+        height: auto;
+        margin-top: 10px;
+      }
+      /* ---- the library's tabs, each a playlist (ui/select.js) */
+      .tabs {
+        display: flex;
+        flex: none;
+        gap: 2px;
+        padding: 3px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .tabs button {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 40px;
+        padding: 0 8px;
+        border: 0;
+        border-radius: 13px;
+        background: transparent;
+        color: var(--dim);
+        font: 800 12px var(--display);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .tabs button span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .tabs button:hover {
+        color: var(--fg);
+      }
+      .tabs button.on {
+        background: var(--fg);
+        color: #05070f;
+        box-shadow: 0 4px 18px rgba(255, 255, 255, 0.12);
+      }
+      .tabs button svg {
+        flex: none;
+        width: 15px;
+        height: 15px;
+        fill: #ff3b5c;
+      }
+      .tabs button svg.pk {
+        fill: #ffd84a;
+      }
+      .row .plays {
+        flex: none;
+        color: var(--dim);
+        font: 700 11px var(--mono);
+        font-variant-numeric: tabular-nums;
+      }
+      .tabs button small {
+        font: 800 10px var(--mono);
+        opacity: 0.6;
+      }
+      .tabs button small:empty {
+        display: none;
+      }
+      .library:not([data-tab='songs']) .for-songs,
+      .library[data-tab='songs'] .for-own,
+      .library[data-tab='artist'] .for-own,
+      .library:not([data-tab='mine']) .for-mine,
+      .library:not([data-tab='lists']) .for-lists,
+      .library:not([data-tab='artist']) .for-artist,
+      .library > .chips:not(.for-lists) {
+        display: none !important;
+      }
+      .addmini {
+        position: relative;
+        flex: none;
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1.5px dashed #29e7ff;
+        background: rgba(41, 231, 255, 0.1);
+        color: #29e7ff;
+      }
+      .addmini svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+      }
+      .addmini i {
+        position: absolute;
+        right: -2px;
+        top: -2px;
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #29e7ff;
+        color: #000;
+        font: 900 14px/1 var(--display);
+        font-style: normal;
+      }
+      body.dropping .addmini {
+        background: rgba(41, 231, 255, 0.35);
+        border-style: solid;
+      }
+      /* the tab as a playlist: play all, shuffle, how many */
+      .listbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: none;
+      }
+      .lb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 38px;
+        padding: 0 14px 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--fg);
+        font: 800 12px var(--display);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        transition:
+          transform 0.12s,
+          background 0.2s;
+      }
+      .lb:active {
+        transform: scale(0.96);
+      }
+      .lb:disabled {
+        opacity: 0.35;
+      }
+      .lb.main {
+        border-color: transparent;
+        background: var(--fg);
+        color: #05070f;
+      }
+      .lb .tri {
+        width: 0;
+        height: 0;
+        border-left: 10px solid currentColor;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+      }
+      .lb svg {
+        width: 17px;
+        height: 17px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #listcount {
+        margin-left: auto;
+        color: var(--dim);
+        font: 700 11px var(--mono);
+        white-space: nowrap;
+      }
+      /* the genres at the heading of the popular songs */
+      .rowhead {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 14px 0 6px;
+      }
+      .rowhead p {
+        margin: 0 0 0 8px;
+      }
+      .rows .row {
+        animation: rowin 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+        animation-delay: calc(var(--n, 0) * 18ms);
+      }
+      .rowhead .chips {
+        text-transform: none;
+        letter-spacing: normal;
+      }
+      @keyframes rowin {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+      }
+      .row:focus-visible {
+        outline: 2px solid hsl(var(--h, 330) 90% 65%);
+        outline-offset: -2px;
+      }
+      .empty {
+        margin: 40px auto;
+        max-width: 260px;
+        text-align: center;
+        color: var(--dim);
+        font: 700 13px/1.5 var(--mono);
+      }
+      /* the heart: on a row, on the stage, on the pause and the results */
+      .heart,
+      .like {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--dim);
+      }
+      .heart svg,
+      .like svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linejoin: round;
+        transition: transform 0.2s;
+      }
+      .heart:hover,
+      .like:hover {
+        color: var(--fg);
+      }
+      .heart.on,
+      .like.on {
+        color: #ff3b5c;
+      }
+      .heart.on svg,
+      .like.on svg {
+        fill: #ff3b5c;
+        filter: drop-shadow(0 0 6px rgba(255, 59, 92, 0.7));
+        animation: heartpop 0.35s cubic-bezier(0.3, 1.8, 0.5, 1);
+      }
+      @keyframes heartpop {
+        from {
+          transform: scale(0.5);
+        }
+      }
+      .row .heart {
+        opacity: 0.55;
+      }
+      .row .heart.on,
+      .row:hover .heart,
+      .row.on .heart {
+        opacity: 1;
+      }
+      /* ---- the player's own order and the songs' menus (ui/order.js, ui/sheet.js, ui/select.js) */
+      .rows {
+        position: relative;
+      }
+      /* (a finger may scroll the list up and down; held, sideways and dragged it is the list's own) */
+      .rows .row {
+        touch-action: pan-y;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .rows.calm .row {
+        animation: none;
+      }
+      .row .more {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 40px;
+        margin-right: -6px;
+        padding: 0;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: var(--dim);
+      }
+      .row .more svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+      .row .more:hover,
+      .row .more:focus-visible {
+        color: var(--fg);
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .row .grip {
+        display: none;
+      }
+      /* (the grip where a pointer hovers: shown on the row under it, the row picked or the one with the keys) */
+      @media (hover: hover) and (pointer: fine) {
+        .rows.sortable .row {
+          padding-left: 24px;
+        }
+        .row .grip {
+          position: absolute;
+          left: 1px;
+          top: 50%;
+          display: grid;
+          place-items: center;
+          width: 22px;
+          height: 40px;
+          margin-top: -20px;
+          color: var(--dim);
+          opacity: 0;
+          cursor: grab;
+          touch-action: none;
+          transition: opacity 0.15s;
+        }
+        .row:hover .grip,
+        .row:focus-visible .grip,
+        .row.on .grip,
+        .row.dragging .grip {
+          opacity: 1;
+        }
+        .row .grip:hover {
+          color: var(--fg);
+        }
+        .row .grip svg {
+          width: 16px;
+          height: 16px;
+          fill: currentColor;
+        }
+      }
+      .rows.sorting,
+      .rows.sorting * {
+        cursor: grabbing !important;
+      }
+      .rows .row.make {
+        transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .rows .row.dragging,
+      .rows .row.lifted {
+        z-index: 5;
+        scale: 1.01;
+        background: rgba(30, 33, 52, 0.97);
+        border-color: hsl(var(--h, 190) 90% 65% / 0.45);
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.6),
+          0 0 24px hsl(var(--h, 190) 90% 55% / 0.18);
+        transition:
+          scale 0.15s,
+          box-shadow 0.15s;
+      }
+      .rows .row.lifted {
+        scale: 1.025;
+      }
+      .rows .slot {
+        position: absolute;
+        left: 0;
+        right: 4px;
+        border: 1.5px dashed rgba(255, 255, 255, 0.22);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        pointer-events: none;
+        transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .rows .row.landing {
+        scale: 1;
+        transition:
+          transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1),
+          scale 0.16s;
+      }
+      .rows .row.nudge {
+        animation: nudge 0.35s ease-out;
+      }
+      @keyframes nudge {
+        from {
+          background: rgba(41, 231, 255, 0.22);
+        }
+      }
+      .rows .row.gone {
+        min-height: 0;
+        height: 0 !important;
+        margin-top: -4px;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+          height 0.2s,
+          min-height 0.2s,
+          padding 0.2s,
+          margin 0.2s,
+          opacity 0.15s;
+      }
+      /* (swiped to the left: the row slides off its remove) */
+      .rows .row.swiping,
+      .rows .row.open {
+        overflow: hidden;
+        background: #0d1020;
+      }
+      .rows .row.swiping > :not(.swipedel),
+      .rows .row.open > :not(.swipedel),
+      .rows .row.settle > :not(.swipedel) {
+        transform: translateX(var(--sx, 0px));
+      }
+      .rows .row.settle > :not(.swipedel),
+      .rows .row.settle .swipedel {
+        transition:
+          transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+          width 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .row .swipedel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: grid;
+        place-items: center;
+        width: max(0px, calc(var(--sx, 0px) * -1));
+        padding: 0;
+        border: 0;
+        border-radius: 0 13px 13px 0;
+        background: #e8304f;
+        color: #fff;
+        overflow: hidden;
+      }
+      .row .swipedel svg {
+        flex: none;
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.15s;
+      }
+      .row.far .swipedel {
+        background: #ff1a2e;
+      }
+      .row.far .swipedel svg {
+        transform: scale(1.25);
+      }
+      /* the menus: a sheet from the bottom on a phone, a small one by its button on a computer */
+      .mbg {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.22s;
+      }
+      .mbg.in {
+        background: rgba(0, 0, 0, 0.18);
+      }
+      .mbg.phone.in {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .msheet {
+        position: fixed;
+        z-index: 61;
+        color: var(--fg);
+        background: rgba(17, 19, 32, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        font: 700 13px var(--mono);
+        outline: none;
+        overscroll-behavior: contain;
+      }
+      .msheet.pop {
+        width: 300px;
+        max-height: min(72vh, 540px);
+        overflow-y: auto;
+        padding: 8px;
+        border-radius: 18px;
+        opacity: 0;
+        transform: scale(0.96) translateY(-4px);
+        transform-origin: top right;
+        transition:
+          opacity 0.14s,
+          transform 0.14s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .msheet.pop.in {
+        opacity: 1;
+        transform: none;
+      }
+      .msheet.phone {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-height: 84vh;
+        overflow-y: auto;
+        padding: 6px 14px calc(18px + env(safe-area-inset-bottom));
+        border-radius: 24px 24px 0 0;
+        border-bottom: 0;
+        transform: translateY(100%);
+        transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .msheet.phone.in {
+        transform: none;
+      }
+      .msheet.phone.held {
+        transition: none;
+      }
+      /* (its handle: a wide strip to pull it down by, the page not scrolled under the finger) */
+      .msheet .grab {
+        display: block;
+        height: 22px;
+        margin: -6px -14px 2px;
+        touch-action: none;
+      }
+      .msheet .grab::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 5px;
+        margin: 9px auto 0;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .msheet.phone .mhead {
+        touch-action: none;
+      }
+      .mhead {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 4px 10px;
+      }
+      .mhead .mthumb {
+        position: relative;
+        flex: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+      }
+      .mhead .mt {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .mhead b {
+        font: 800 15px var(--display);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .mhead small {
+        align-self: flex-start;
+        max-width: 100%;
+        color: var(--dim);
+        font: 600 12px var(--mono);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: var(--pointer);
+      }
+      .mhead small:hover {
+        color: var(--fg);
+        text-decoration: underline;
+      }
+      .macts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+        gap: 4px;
+        padding: 2px 0 10px;
+        margin-bottom: 6px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .mact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+        padding: 6px 2px;
+        border: 0;
+        border-radius: 14px;
+        background: transparent;
+        color: var(--fg);
+        font: 700 11px var(--mono);
+      }
+      .mact i {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        transition:
+          transform 0.12s,
+          background 0.2s,
+          color 0.2s;
+      }
+      .mact:hover i,
+      .mact:focus-visible i {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .mact:focus-visible {
+        outline: none;
+      }
+      .mact:active i {
+        transform: scale(0.9);
+      }
+      .mact svg,
+      .mrow svg,
+      .madd .mh svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mact span {
+        max-width: 100%;
+        line-height: 1.2;
+        text-align: center;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .mact.mlike.on {
+        color: #ff3b5c;
+      }
+      .mact.mlike.on svg {
+        fill: #ff3b5c;
+        animation: heartpop 0.35s cubic-bezier(0.3, 1.8, 0.5, 1);
+      }
+      .mact.rm {
+        color: #ff6b81;
+      }
+      .mact.rm.armed i {
+        background: #ff3b5c;
+        color: #fff;
+        animation: armed 0.3s;
+      }
+      @keyframes armed {
+        25% {
+          transform: translateX(-4px);
+        }
+        75% {
+          transform: translateX(4px);
+        }
+      }
+      .mact.send.done i {
+        background: #5ef08a;
+        color: #05070f;
+      }
+      .madd .mh {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 6px 8px 4px;
+        color: var(--dim);
+        font: 800 11px var(--mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .madd .mh svg {
+        width: 16px;
+        height: 16px;
+      }
+      .mrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 50px;
+        padding: 6px 8px;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: var(--fg);
+        font: 700 14px var(--mono);
+        text-align: left;
+      }
+      .mrow:hover,
+      .mrow:focus-visible {
+        background: rgba(255, 255, 255, 0.07);
+        outline: none;
+      }
+      .mrow i {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .mrow i svg {
+        width: 20px;
+        height: 20px;
+      }
+      .mrow span {
+        flex: 1;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .mrow em {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        color: transparent;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s;
+      }
+      .mrow em svg {
+        width: 16px;
+        height: 16px;
+        stroke-width: 3;
+      }
+      .mrow.on em {
+        background: #29e7ff;
+        border-color: #29e7ff;
+        color: #05070f;
+        animation: heartpop 0.3s cubic-bezier(0.3, 1.8, 0.5, 1);
+      }
+      .mrow:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .mrow:disabled em {
+        border: 0;
+        color: var(--dim);
+      }
+      .mrow:disabled em svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 1.8;
+      }
+      .mrow.new i {
+        background: rgba(41, 231, 255, 0.15);
+        color: #29e7ff;
+      }
+      .mrow.rec i {
+        background: rgba(255, 216, 74, 0.14);
+        color: #ffd84a;
+      }
+      .mrow.rm {
+        color: #ff6b81;
+      }
+      .mrow.name input {
+        flex: 1;
+        min-width: 0;
+        height: 40px;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.35);
+        color: var(--fg);
+        font: 700 16px var(--mono);
+      }
+      .mrow.name button {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #29e7ff;
+        color: #05070f;
+      }
+      .mrow.name button svg {
+        stroke-width: 2.6;
+      }
+      /* the undo, a few seconds at the bottom (its bar the time left) */
+      .undo {
+        position: fixed;
+        left: 50%;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+        z-index: 62;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        max-width: calc(100vw - 32px);
+        padding: 6px 6px 6px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        background: rgba(20, 22, 36, 0.97);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font: 700 13px var(--mono);
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, 140%);
+        transition:
+          transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 0.2s;
+      }
+      .undo.in {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+      }
+      .undo .ut {
+        white-space: nowrap;
+      }
+      .undo .ub {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 40px;
+        padding: 0 14px 0 10px;
+        border: 0;
+        border-radius: 10px;
+        background: #29e7ff;
+        color: #05070f;
+        font: 800 13px var(--display);
+        white-space: nowrap;
+      }
+      .undo .ub svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .undo .ubar {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: #29e7ff;
+        transform-origin: left;
+      }
+      .undo.in .ubar {
+        animation: ubar 5s linear forwards;
+      }
+      @keyframes ubar {
+        to {
+          transform: scaleX(0);
+        }
+      }
+      /* ↺ beside play all: the list back as it came */
+      .lb.ic {
+        width: 38px;
+        padding: 0;
+        justify-content: center;
+      }
+      .lb[hidden] {
+        display: none;
+      }
+      /* the playlists' chips: + first, the one open with a mark that its name opens its menu */
+      #plists button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      #plists button small {
+        opacity: 0.6;
+        font-size: 11px;
+      }
+      #plists button small:empty {
+        display: none;
+      }
+      #plists button.on::after {
+        content: '';
+        width: 6px;
+        height: 6px;
+        margin: -3px 0 0 2px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
+      }
+      #plists .plus {
+        justify-content: center;
+        min-width: 40px;
+        height: 36px;
+        padding: 0 10px;
+        border-color: rgba(41, 231, 255, 0.5);
+        background: rgba(41, 231, 255, 0.14);
+        color: #29e7ff;
+      }
+      #plists .plus svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+      }
+      .tabs button svg.pl {
+        fill: none;
+        stroke: #29e7ff;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      /* an artist's page: back, their picture, their name, how many follow them, how many songs */
+      .artisthead {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: none;
+        padding: 8px 8px 8px 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        animation: rowin 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .artisthead .back,
+      .artisthead .out {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--fg);
+      }
+      .artisthead .out {
+        background: transparent;
+        color: var(--dim);
+      }
+      .artisthead .out[hidden] {
+        display: none;
+      }
+      .artisthead .back:hover,
+      .artisthead .out:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--fg);
+      }
+      .artisthead svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .artisthead .out svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+      .artisthead .ava {
+        flex: none;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background-image: radial-gradient(circle at 50% 35%, hsl(var(--h, 330) 90% 70%), hsl(var(--h, 330) 70% 22%));
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+      }
+      .artisthead.busy .ava {
+        animation: avawait 0.8s ease-in-out infinite alternate;
+      }
+      @keyframes avawait {
+        to {
+          opacity: 0.45;
+        }
+      }
+      .artisthead .who {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .artisthead .who b {
+        font: 900 18px var(--display);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .artisthead .who small {
+        display: flex;
+        gap: 14px;
+        color: var(--dim);
+        font: 700 12px var(--mono);
+      }
+      .artisthead .who small span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .artisthead .who small svg {
+        width: 15px;
+        height: 15px;
+        stroke-width: 2;
+      }
+      .artisthead .who .off {
+        color: #ffb84a;
+      }
+      /* the stage's artist: their page; the stage's add and menu */
+      .stage .artist {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+        border: 0;
+        background: none;
+        text-align: left;
+        cursor: var(--pointer);
+      }
+      .stage .artist:disabled {
+        color: var(--dim);
+        cursor: default;
+      }
+      @media (hover: hover) {
+        .stage .artist:not(:disabled):hover {
+          color: var(--fg);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+      }
+      .stage .artist:not(:disabled)::after {
+        content: ' ›';
+        opacity: 0.7;
+      }
+      .stage .aline {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        margin-top: 2px;
+      }
+      .stage .aline .artist {
+        flex: 0 1 auto;
+        min-width: 0;
+        margin: 0 auto 0 0;
+      }
+      .stage .aline .add,
+      .stage .tline .more {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        margin: -6px -4px 0 0;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--dim);
+      }
+      .stage .aline .add[hidden],
+      .stage .tline .more[hidden] {
+        display: none;
+      }
+      .stage .aline .add {
+        width: 38px;
+        height: 38px;
+        margin: -8px -6px -8px 0;
+      }
+      .stage .aline .add:hover,
+      .stage .tline .more:hover {
+        color: var(--fg);
+      }
+      .stage .aline .add svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .stage .tline .more svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+      /* (a phone upright: its link and its add in its menu, the title's room kept; the undo over the play) */
+      @media (max-width: 760px) and (orientation: portrait) {
+        .stage .aline .share,
+        .stage .aline .add {
+          display: none !important;
+        }
+        .undo {
+          bottom: calc(104px + env(safe-area-inset-bottom));
+        }
+      }
+      .stage .tline {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .stage .tline .title {
+        flex: 1;
+        min-width: 0;
+      }
+      .stage .aline .share {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        margin: -8px 0;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--dim);
+      }
+      .stage .aline .share[hidden] {
+        display: none;
+      }
+      .stage .aline .share:hover {
+        color: var(--fg);
+      }
+      .stage .aline .share svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .stage .aline .share .ok,
+      .stage .aline .share.done svg:first-child {
+        display: none;
+      }
+      .stage .aline .share.done .ok {
+        display: block;
+        color: #5ef08a;
+      }
+      .stage .tline .like[hidden] {
+        display: none;
+      }
+      .stage .tline .like {
+        margin: -6px -6px 0 0;
+        width: 44px;
+        height: 44px;
+      }
+      .stage .tline .like svg {
+        width: 26px;
+        height: 26px;
+      }
+      .stage .skip {
+        display: block;
+        margin-top: 10px;
+        padding: 6px 0;
+        border: 0;
+        background: none;
+        color: var(--dim);
+        font: 700 12px var(--mono);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .stage .skip[hidden] {
+        display: none;
+      }
+      /* the preview heard or not: a button on the cover, remembered */
+      .stage .art .pv {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        background: rgba(5, 7, 15, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: #fff;
+        transform: scale(calc(1 / (1 + var(--pulse, 0) * 0.06)));
+      }
+      .stage .art .pv svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .stage .art .pv .spk {
+        fill: currentColor;
+      }
+      .stage .art .pv .off,
+      .stage .art .pv.off .on {
+        display: none;
+      }
+      .stage .art .pv.off .off {
+        display: inline;
+      }
+      .stage .art .pv.off {
+        color: var(--dim);
+      }
+      .npart {
+        background:
+          radial-gradient(circle at 50% 48%, hsl(var(--h) 100% 72%) 0 18%, transparent 19%),
+          repeating-linear-gradient(to bottom, transparent 0 8px, rgba(0, 0, 0, 0.35) 8px 10px) 0 0 / 100% 55% no-repeat,
+          linear-gradient(to bottom, hsl(calc(var(--h) + 40) 70% 18%), hsl(var(--h) 80% 40%) 55%, #05070f 55%);
+        background-size: cover;
+        background-position: center;
+      }
+      .npart[data-art] {
+        background-size: cover;
+      }
+
+      /* ---- the pause and the results: a panel beside the held picture, never over the hero (he runs on the left
+         third: sideways and on a computer the panel is on the right; upright it is a sheet from the bottom) */
+      .pause {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        display: flex;
+        justify-content: flex-end;
+        background: linear-gradient(to left, rgba(3, 4, 10, 0.78), rgba(3, 4, 10, 0.35) 46%, transparent 70%);
+        animation: fadein 0.25s ease-out;
+      }
+      .pause[hidden] {
+        display: none;
+      }
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+      }
+      .deck {
+        --h: 330;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: min(400px, 44vw);
+        height: 100%;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+          max(20px, env(safe-area-inset-bottom)) 22px;
+        background: linear-gradient(160deg, hsl(var(--h) 60% 14% / 0.82), rgba(8, 10, 20, 0.86) 55%);
+        border-left: 1px solid hsl(var(--h) 90% 65% / 0.3);
+        box-shadow: -30px 0 80px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(16px) saturate(1.3);
+        -webkit-backdrop-filter: blur(16px) saturate(1.3);
+        animation: deckin 0.38s cubic-bezier(0.2, 0.9, 0.2, 1);
+        text-align: left;
+      }
+      /* (centred while it fits, scrolled from its top when it does not) */
+      .deck > :first-child {
+        margin-top: auto !important;
+      }
+      .deck > :last-child {
+        margin-bottom: auto !important;
+      }
+      @keyframes deckin {
+        from {
+          transform: translateX(40px);
+          opacity: 0;
+        }
+      }
+      .deck .kicker {
+        margin: 0;
+        color: hsl(var(--h) 90% 72%);
+        font: 900 12px var(--display);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .np {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 14px;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .np {
+        grid-template-columns: 64px minmax(0, 1fr) auto auto;
+      }
+      .np .npshare {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--dim);
+      }
+      .np .npshare:hover {
+        color: var(--fg);
+      }
+      .np .npshare[hidden] {
+        display: none;
+      }
+      .np .npshare svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .np .npshare .ok,
+      .np .npshare.done svg:first-child {
+        display: none;
+      }
+      .np .npshare.done .ok {
+        display: block;
+        color: #5ef08a;
+      }
+      .np .npart {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        box-shadow: 0 6px 24px hsl(var(--h) 90% 40% / 0.45);
+      }
+      .np .nptxt {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+      .np .nptitle {
+        font: 900 16px/1.2 var(--display);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .np .npartist {
+        color: var(--dim);
+        font: 600 12px var(--mono);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .np .npartist:empty {
+        display: none;
+      }
+      .np .like[hidden] {
+        visibility: hidden;
+        display: grid;
+      }
+      .npbar {
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .npbar i {
+        display: block;
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, hsl(var(--h) 90% 55%), hsl(calc(var(--h) + 40) 100% 70%));
+        box-shadow: 0 0 10px hsl(var(--h) 100% 60%);
+      }
+      .nptime {
+        margin: -6px 0 0;
+        color: var(--dim);
+        font: 700 11px var(--mono);
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+      }
+      .deck .btn.big {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 60px;
+        font: 900 18px var(--display);
+        text-transform: uppercase;
+      }
+      .deck .btn .tri {
+        width: 0;
+        height: 0;
+        border-left: 16px solid #fff;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+      }
+      .dbtns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+        gap: 8px;
+      }
+      .dbtns button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-height: 64px;
+        padding: 8px 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--fg);
+        font: 700 11px var(--mono);
+        transition:
+          background 0.15s,
+          transform 0.12s;
+      }
+      .dbtns button[hidden] {
+        display: none;
+      }
+      .dbtns button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .dbtns button:active {
+        transform: scale(0.95);
+      }
+      .dbtns svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #pnext svg,
+      #rnext svg {
+        fill: currentColor;
+      }
+      .qline {
+        margin: 0;
+        color: var(--dim);
+        font: 700 11px var(--mono);
+        text-align: center;
+      }
+      .qline:empty {
+        display: none;
+      }
+      /* the results: the screen itself see-through, the run's last picture left to look at */
+      #result {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: stretch;
+        padding: 0;
+        overflow: hidden;
+        background: linear-gradient(to left, rgba(3, 4, 10, 0.8), rgba(3, 4, 10, 0.4) 46%, rgba(3, 4, 10, 0.08) 75%);
+        animation: fadein 0.4s ease-out;
+      }
+      #result > .deck {
+        margin: 0;
+        width: min(440px, 48vw);
+        gap: 10px;
+      }
+      .rdeck #rtitle {
+        text-align: left;
+        font-size: clamp(28px, 4.4vw, 46px);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-shadow: 0 0 30px hsl(var(--h) 100% 60% / 0.5);
+      }
+      .rdeck #rsub {
+        margin: -4px 0 0;
+        font: 700 13px var(--mono);
+      }
+      .rdeck #rsub[hidden] {
+        display: none;
+      }
+      .rnums {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 4px 4px 0;
+      }
+      .rdeck #rstars {
+        font-size: 30px;
+        letter-spacing: 4px;
+      }
+      .rdeck #rscore {
+        font-size: clamp(30px, 4vw, 42px);
+      }
+      .rdeck #rgraph {
+        width: 100%;
+        margin: 0;
+      }
+      .rdeck #rstats {
+        justify-content: space-between;
+        margin: 0;
+        gap: 6px;
+      }
+      .rdeck #rstats .stat {
+        font-size: 15px;
+      }
+      .rdeck #rsay,
+      .rdeck #rnews,
+      .rdeck #rcredit {
+        margin: 0;
+      }
+      .rdeck #rsay:empty,
+      .rdeck #rnews:empty,
+      .rdeck #rperks:empty {
+        display: none;
+      }
+      .rdeck #rperks {
+        margin: 0;
+      }
+      .rdeck .btns {
+        justify-content: stretch;
+        margin: 0;
+        gap: 8px;
+      }
+      .rdeck .btns .btn {
+        flex: 1 1 auto;
+      }
+      .rdeck .btns .btn[hidden] {
+        display: none;
+      }
+      .rdeck .btns .btn.big {
+        flex-basis: 100%;
+      }
+      /* the next song: the main act after a win, a count round it when a playlist plays through */
+      #rnext {
+        --p: 0;
+        justify-content: flex-start;
+        gap: 14px;
+        padding: 10px 18px 10px 12px;
+        text-transform: none;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--fg);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      #rnext[hidden] {
+        display: none;
+      }
+      #rnext.main {
+        background: linear-gradient(120deg, hsl(var(--h) 90% 50%), hsl(calc(var(--h) + 40) 100% 60%));
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 10px 34px hsl(var(--h) 100% 50% / 0.45);
+      }
+      #rnext .nx {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #rnext .nx small {
+        font: 800 10px var(--mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        opacity: 0.75;
+      }
+      #rnext .nx b {
+        max-width: 100%;
+        font: 900 16px var(--display);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #rnext svg {
+        flex: none;
+        width: 24px;
+        height: 24px;
+      }
+      #rnext .ring {
+        display: none;
+        flex: none;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: conic-gradient(#fff calc(var(--p) * 360deg), rgba(255, 255, 255, 0.22) 0);
+        -webkit-mask: radial-gradient(circle, transparent 0 14px, #000 15px);
+        mask: radial-gradient(circle, transparent 0 14px, #000 15px);
+      }
+      #rnext.counting .ring {
+        display: grid;
+      }
+      #rnext .cnt {
+        display: none;
+      }
+      /* (a narrow phone, or one held sideways: each tab as wide as its word, the row scrolled when they do not fit) */
+      @media (max-width: 480px), (max-height: 520px) and (orientation: landscape) {
+        .tabs {
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar {
+          display: none;
+        }
+        .tabs button {
+          flex: 1 0 auto;
+          padding: 0 12px;
+        }
+      }
+      /* upright: a sheet from the top (he runs low on the screen, two thirds down: the sky is what it covers), the
+         main act at its lower edge, nearest the thumb */
+      @media (orientation: portrait) {
+        .pause,
+        #result {
+          align-items: flex-start;
+          background: linear-gradient(to bottom, rgba(3, 4, 10, 0.85), rgba(3, 4, 10, 0.3) 50%, transparent 66%);
+        }
+        .deck,
+        #result > .deck {
+          width: 100%;
+          height: auto;
+          max-height: 56dvh;
+          padding: max(14px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 14px
+            max(16px, env(safe-area-inset-left));
+          border-left: 0;
+          border-bottom: 1px solid hsl(var(--h) 90% 65% / 0.3);
+          border-radius: 0 0 26px 26px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+          animation-name: sheetin;
+        }
+        .deck > :first-child {
+          margin-top: 0 !important;
+        }
+        .deck::after {
+          content: '';
+          order: 99;
+          align-self: center;
+          flex: none;
+          width: 40px;
+          height: 4px;
+          margin: 0 0 -4px;
+          border-radius: 2px;
+          background: rgba(255, 255, 255, 0.25);
+        }
+        .np {
+          grid-template-columns: 52px minmax(0, 1fr) auto auto;
+          padding: 8px;
+        }
+        .np .npart {
+          width: 52px;
+          height: 52px;
+        }
+        .dbtns button {
+          min-height: 56px;
+        }
+      }
+      @keyframes sheetin {
+        from {
+          transform: translateY(-60px);
+          opacity: 0;
+        }
+      }
+      /* (a phone: the results' acts first, under the song; the details after them, scrolled to) */
+      @media (orientation: portrait), (max-height: 520px) {
+        .rdeck > * {
+          order: 6;
+        }
+        .rdeck #rtitle,
+        .rdeck #rsub {
+          order: 0;
+        }
+        .rdeck .np {
+          order: 1;
+        }
+        .rdeck .rnums {
+          order: 2;
+        }
+        .rdeck #rperks {
+          order: 3;
+        }
+        .rdeck #rnext {
+          order: 4;
+        }
+        .rdeck .btns {
+          order: 5;
+        }
+        .rdeck #rqueue {
+          order: 5;
+        }
+        .rdeck .rnums {
+          padding-top: 0;
+        }
+        .rdeck #rstars {
+          font-size: 24px;
+        }
+        .rdeck .btns .btn {
+          padding: 12px 14px;
+        }
+        .rdeck .btns .btn.big {
+          min-height: 50px;
+        }
+      }
+      /* a phone held sideways: little height, everything tighter */
+      @media (max-height: 520px) and (orientation: landscape) {
+        .deck {
+          gap: 8px;
+          padding-top: max(12px, env(safe-area-inset-top));
+          padding-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+        .np {
+          grid-template-columns: 48px minmax(0, 1fr) auto auto;
+          padding: 6px;
+        }
+        .np .npart {
+          width: 48px;
+          height: 48px;
+        }
+        .deck .btn.big {
+          min-height: 50px;
+        }
+        .dbtns button {
+          min-height: 52px;
+          flex-direction: row;
+        }
+        .tabs button {
+          height: 34px;
+        }
+        .listbar .lb {
+          height: 34px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .deck,
+        .pause,
+        #result,
+        .rows .row {
+          animation: none;
+        }
+        .rows .row,
+        .rows .row > *,
+        .rows .slot,
+        .msheet,
+        .undo {
+          transition-duration: 0.01s !important;
+        }
+      }
+    </style>
+    <template id="ic-sun"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.5" />
+        <path
+          d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"
+        /></svg
+    ></template>
+    <template id="ic-three"
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="2" y="7" width="6" height="10" rx="1.5" />
+        <rect x="9" y="7" width="6" height="10" rx="1.5" />
+        <rect x="16" y="7" width="6" height="10" rx="1.5" />
+        <path d="M4 12h1M11 12h2M18 12h1" /></svg
+    ></template>
+  </head>
+  <body>
+    <!-- (what the page is, for whatever reads it without running it: a crawler, an AI assistant, a browser without JS) -->
+    <noscript>
+      <main class="noscript">
+        <h1>Struna – a rhythm game that builds the level from any song</h1>
+        <p>Struna is a free rhythm runner that runs in the browser, on a phone or a PC. It listens to a song and builds the level from it: the world, the tempo and every obstacle, each one on a beat. An AI cursor called Struna drops them in front of you in time with the music.</p>
+        <ul>
+          <li>Jump, slide and kick on the beat; grab bars and ride lines over gaps.</li>
+          <li>Built-in songs, or add your own music: the same song always gives the same level.</li>
+          <li>Your songs never leave your device. No sign-up, no download.</li>
+          <li>Ten worlds, chosen by the song's mood; bosses, clones, flights and shafts.</li>
+          <li>In 13 languages.</li>
+        </ul>
+        <p>Struna needs JavaScript to play.</p>
+      </main>
+    </noscript>
+    <!-- the boot screen: shown before any script runs (no black screen on a slow line), its bar filled as the game's files
+         come (the modules, counted as they land; then the moves' clips, by their bytes: main.js), gone once it is ready -->
+    <div id="boot">
+      <div class="eyes"><i></i><i></i></div>
+      <div class="logo">STRU<b>NA</b></div>
+      <div class="bar"><div id="bootbar"></div></div>
+      <small id="bootpct">0%</small>
+    </div>
+    <script>
+      (() => {
+        const bar = document.getElementById('bootbar'),
+          pct = document.getElementById('bootpct');
+        let p = 0,
+          seen = 0;
+        window.__boot = v => {
+          p = Math.max(p, Math.min(1, v));
+          bar.style.width = `${Math.round(p * 100)}%`;
+          pct.textContent = `${Math.round(p * 100)}%`;
+        };
+        // (the modules as they land: about this many; they are the first two fifths)
+        const N = +(document.querySelector('meta[name=boot-files]')?.content ?? 110);
+        try {
+          new PerformanceObserver(l => {
+            for (const e of l.getEntries()) if (/\/src\/.*\.js/.test(e.name)) seen++;
+            window.__boot((Math.min(seen, N) / N) * 0.4);
+          }).observe({ type: 'resource', buffered: true });
+        } catch {}
+      })();
+    </script>
+    <canvas id="cv"></canvas>
+    <div
+      id="safe"
+      style="
+        position: fixed;
+        inset: 0;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+          env(safe-area-inset-left);
+        pointer-events: none;
+        visibility: hidden;
+      "
+    ></div>
+    <button id="bugbtn" title="Report a bug (B / F8)">BUG</button>
+    <button id="pausebtn" title="Pause (P / Esc)">❚❚</button>
+    <button id="odbtn" hidden aria-label="OVERDRIVE"><svg viewBox="-0.6 -0.6 1.2 1.2" aria-hidden="true"><path d="M0.1 -0.5 L-0.28 0.06 L-0.02 0.06 L-0.12 0.5 L0.28 -0.08 L0.02 -0.08 Z" /></svg></button>
+    <div id="pads" aria-hidden="true"></div>
+    <div id="padedit" hidden>
+      <canvas id="peguide"></canvas>
+      <div class="petools">
+        <p class="pehead"><b>buttons</b><span id="peway"></span></p>
+        <small>drag a button to move it, pick one to size it</small>
+        <label>size<input type="range" id="pesize" /></label>
+        <label>opacity<input type="range" id="peop" /></label>
+        <div class="pebtns"><button id="pereset">reset</button><button id="pedone">done</button></div>
+      </div>
+    </div>
+    <div id="count" hidden></div>
+    <!-- the pause: a panel beside the held picture (the hero knocks on the glass), the song in it -->
+    <div class="pause" id="pause" hidden>
+      <div class="deck">
+        <p class="kicker">paused</p>
+        <div class="np">
+          <span class="npart"></span>
+          <div class="nptxt"><b class="nptitle"></b><span class="npartist"></span></div>
+          <button class="npshare" aria-label="copy the song's link" title="copy the song's link">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" /></svg
+            ><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg>
+          </button>
+          <button class="like" aria-label="like"></button>
+        </div>
+        <div class="npbar"><i></i></div>
+        <p class="nptime"></p>
+        <button class="btn main big" id="presume"><span class="tri"></span><span>resume</span></button>
+        <div class="dbtns">
+          <button id="prestart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7M4 4v4.5h4.5" /></svg
+            ><span>again</span></button
+          ><button id="pnext" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l9 7-9 7zM18 5v14" /></svg
+            ><span>next</span></button
+          ><button id="ppads" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="16" r="3" /><circle cx="17" cy="16" r="3" /><circle cx="10" cy="8" r="3" /><circle cx="14" cy="8" r="3" /></svg
+            ><span>buttons</span></button
+          ><button id="pmenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg
+            ><span>songs</span></button
+          ><button id="pbug">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 8a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0zM12 10v8M4 9l4 2M20 9l-4 2M3 15h5M16 15h5M5 21l3-3M19 21l-3-3" /></svg
+            ><span>bug</span>
+          </button>
+        </div>
+        <p class="qline" id="pqueue"></p>
+      </div>
+    </div>
+    <section class="screen" id="menu" hidden>
+      <header class="mtop">
+        <div class="brand">
+          <div class="mascot" id="mascot" aria-hidden="true">
+            <i><b></b></i><i><b></b></i>
+          </div>
+          <h1 class="logo">STRU<b>NA</b></h1>
+        </div>
+        <nav class="tools">
+          <button id="tointro" aria-label="how to play">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.6V14M12 17.5v.5" />
+            </svg>
+          </button>
+          <button id="tomemory" aria-label="trophies">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 4h10v4a5 5 0 0 1-10 0z" />
+              <path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M9.5 17h5" />
+            </svg>
+          </button>
+          <button id="tologs" aria-label="story">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5c3-1.5 5.5-1.5 8 0v14c-2.5-1.5-5-1.5-8 0zM20 5c-3-1.5-5.5-1.5-8 0v14c2.5-1.5 5-1.5 8 0z" />
+            </svg>
+          </button>
+          <button class="langbtn" id="langbtn" aria-label="language">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z" /></svg
+            ><span>EN</span>
+          </button>
+          <button id="tosettings" aria-label="settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M10.3 2.5h3.4l.5 2.6a7.5 7.5 0 0 1 1.9 1.1l2.5-.9 1.7 3-2 1.7a7.5 7.5 0 0 1 0 2.2l2 1.7-1.7 3-2.5-.9a7.5 7.5 0 0 1-1.9 1.1l-.5 2.6h-3.4l-.5-2.6a7.5 7.5 0 0 1-1.9-1.1l-2.5.9-1.7-3 2-1.7a7.5 7.5 0 0 1 0-2.2l-2-1.7 1.7-3 2.5.9a7.5 7.5 0 0 1 1.9-1.1z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </header>
+      <div class="overlay" id="langsheet" hidden>
+        <div class="sheet">
+          <button class="x" id="langx" aria-label="close">×</button>
+          <div class="langs" id="mlang"></div>
+        </div>
+      </div>
+      <div class="racebanner" id="racebanner" hidden>
+        <span></span><button class="btn small" id="raceadd">+</button>
+      </div>
+      <div class="pick">
+        <aside class="stage" id="stage">
+          <div class="art"></div>
+          <div class="about">
+            <div class="tline">
+              <h2 class="title"></h2>
+              <button class="like" aria-label="like" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 20.5s-7.5-4.6-9.3-9.4C1.5 7.8 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.5 3.3 4.3 6.6-1.8 4.8-9.3 9.4-9.3 9.4z"
+                  /></svg>
+              </button>
+              <button class="more" aria-label="more" title="more" aria-haspopup="menu" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="5" cy="12" r="1.6" />
+                  <circle cx="12" cy="12" r="1.6" />
+                  <circle cx="19" cy="12" r="1.6" /></svg>
+              </button>
+            </div>
+            <!-- the artist's name: their page (ui/select.js); the song's link, and into a playlist -->
+            <div class="aline">
+              <button class="artist" type="button"></button>
+              <button class="share" aria-label="share the song" title="share the song" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" /></svg
+                ><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg>
+              </button>
+              <!-- the song into a playlist (a computer: beside the link; a phone: in its menu) -->
+              <button class="add" aria-label="add to playlist" title="add to playlist" aria-haspopup="menu" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h11M4 11h11M4 16h7M18 13v8M14 17h8" /></svg>
+              </button>
+            </div>
+            <div class="facts"></div>
+            <a class="credit" target="_blank" rel="noopener" hidden></a>
+            <button class="skip" hidden>I have played before</button>
+          </div>
+          <!-- the modifiers: harder, more points (mods.js), kept for the next songs -->
+          <div class="mods" id="stagemods" hidden></div>
+          <div class="act">
+            <button class="go" id="bigplay" aria-label="play"><span class="tri"></span><span>play</span><small class="mult"></small></button>
+          </div>
+        </aside>
+        <div class="library" data-tab="songs">
+          <!-- the player's own songs, on top of every tab: a click picks several, a folder too on a computer; dropped anywhere on the screen -->
+          <div class="mine">
+            <button id="songsadd">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 18V5l11-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="17" cy="16" r="3" /></svg
+              ><span class="mt"><b>your songs</b><small class="pc">drop songs or a folder here</small
+                ><small class="ph">add songs from this phone</small></span
+              ><i class="plus" aria-hidden="true">+</i>
+            </button>
+            <button id="songsdir" class="pc" aria-label="add a folder" title="add a folder"
+              ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <path d="M12 10.5v5M9.5 13h5" /></svg></button>
+          </div>
+          <!-- the library's tabs (ui/select.js): each a playlist -->
+          <div class="tabs" id="tabs" role="tablist">
+            <button data-tab="songs" role="tab"><span>songs</span><small></small></button
+            ><button data-tab="picks" role="tab"
+              ><svg viewBox="0 0 24 24" aria-hidden="true" class="pk">
+                <path d="M12 2.5l2.9 6.2 6.6.7-5 4.5 1.4 6.6L12 17.2l-5.9 3.3 1.4-6.6-5-4.5 6.6-.7z" /></svg
+              ><span>recommended</span><small></small></button
+            ><button data-tab="liked" role="tab"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 20.5s-7.5-4.6-9.3-9.4C1.5 7.8 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.5 3.3 4.3 6.6-1.8 4.8-9.3 9.4-9.3 9.4z"
+                /></svg
+              ><span>liked</span><small></small></button
+            ><button data-tab="mine" role="tab"><span>mine</span><small></small></button
+            ><button data-tab="lists" role="tab"
+              ><svg viewBox="0 0 24 24" aria-hidden="true" class="pl">
+                <path d="M4 6h12M4 11h12M4 16h7" />
+                <circle cx="17" cy="17" r="2.5" />
+                <path d="M19.5 17V8.5l2-1" /></svg
+              ><span>playlists</span><small></small></button
+            ><button data-tab="recent" role="tab"><span>recent</span><small></small></button>
+          </div>
+          <!-- an artist's page: the way back, who they are (ui/select.js, ui/artist.js) -->
+          <div class="artisthead for-artist" id="artisthead">
+            <button class="back" aria-label="back" title="back">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+            </button>
+            <span class="ava"></span>
+            <span class="who"><b></b><small></small></span>
+            <a class="out" target="_blank" rel="noopener" aria-label="Audius" title="Audius" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg
+            ></a>
+          </div>
+          <div class="find for-songs">
+            <form id="songsfind">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="M16 16l5 5" /></svg
+              ><input
+                id="songsq"
+                type="search"
+                enterkeyhint="search"
+                placeholder="search a song or an artist"
+                aria-label="search a song or an artist"
+              />
+            </form>
+          </div>
+          <!-- the player's own lists searched as one types: its title and artist (recommended, liked, mine, a playlist,
+               recent) -->
+          <div class="find for-own">
+            <form id="listfind">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="M16 16l5 5" /></svg
+              ><input id="listq" type="search" enterkeyhint="search" placeholder="search this list" aria-label="search this list" />
+            </form>
+          </div>
+          <!-- the tab as a playlist -->
+          <div class="listbar">
+            <button id="playall" class="lb main"><span class="tri"></span><span>play all</span></button
+            ><button id="shuffle" class="lb"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 7h3.5c4.5 0 6.5 10 11 10H21M3 17h3.5c1.6 0 2.8-1.2 3.9-2.8M13.6 9.8C14.7 8.2 15.9 7 17.5 7H21" />
+                <path d="M18 4l3 3-3 3M18 14l3 3-3 3" /></svg
+              ><span>shuffle</span></button
+            ><button id="listreset" class="lb ic" aria-label="reset order" title="reset order" hidden
+              ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7" />
+                <path d="M4 4v4.5h4.5" /></svg></button
+            ><span id="listcount"></span>
+          </div>
+          <!-- the player's playlists: a chip each, + makes one -->
+          <div class="chips for-lists" id="plists"></div>
+          <div class="chips" id="songsgenres"></div>
+          <div class="rows" id="songs" role="listbox" aria-label="songs"></div>
+        </div>
+      </div>
+      <input id="upload" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac,.opus" multiple hidden />
+      <input id="uploaddir" type="file" webkitdirectory multiple hidden />
+    </section>
+    <!-- the corner of settings: settings, audio sync, a song from a link, install -->
+    <div id="panel" hidden></div>
+    <div class="toast" id="toast" hidden></div>
+    <!-- the settings: one screen behind the gear on the songs screen, in sections (the touch ones only on a touch screen),
+         two columns held sideways; done always in reach at the bottom -->
+    <section class="screen" id="settings" hidden>
+      <h2 class="title">settings</h2>
+      <div class="sets">
+        <section class="touchset">
+          <h3>controls</h3>
+          <div class="seg schemes" id="sctl">
+            <button data-v="auto">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M3 9l-1.5 3L3 15M21 9l1.5 3L21 15" /></svg
+              ><span>auto</span></button
+            ><button data-v="swipe">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20v-9M12 11l-3 3M12 11l3 3M6 5h12M15 2l3 3-3 3" /></svg
+              ><span>one finger</span></button
+            ><button data-v="zones">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2" /><path d="M12 6v12" /><circle cx="7" cy="12" r="1.6" /><circle cx="17" cy="12" r="1.6" /></svg
+              ><span>two thumbs</span></button
+            ><button data-v="buttons">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3" /><circle cx="10" cy="9" r="3" /><circle cx="18" cy="17" r="3" /><circle cx="14" cy="9" r="3" /></svg
+              ><span>buttons</span></button>
+          </div>
+          <small>auto: one finger held upright, two thumbs held sideways</small>
+          <button class="btn ghost" id="spads" hidden>set up the buttons</button>
+          <label class="check"
+            ><input type="checkbox" id="seasy" /> easy chords
+            <small>a jump or a slide on a chord kicks too (half the points)</small></label
+          >
+          <div class="row">
+            <span>vibration <small>Android</small></span>
+            <div class="seg" id="shaptics">
+              <button data-v="full">full</button><button data-v="low">low</button><button data-v="off">off</button>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>game</h3>
+          <div class="row">
+            <span>difficulty</span>
+            <div class="seg" id="sdiff">
+              <button data-v="easy">easy</button><button data-v="normal">normal</button><button data-v="hard">hard</button>
+            </div>
+          </div>
+          <div class="row">
+            <span>hints: what to press</span>
+            <div class="seg" id="shints">
+              <button data-v="auto">while learning</button><button data-v="always">always</button
+              ><button data-v="off">off</button>
+            </div>
+          </div>
+          <label
+            >effects <small>shake, zoom, strobes</small><input type="range" id="seffects" min="0" max="1" step="0.05"
+          /></label>
+        </section>
+        <section>
+          <h3>sound</h3>
+          <label>music<input type="range" id="smusic" min="0" max="1" step="0.05" /></label>
+          <label>sounds<input type="range" id="ssfx" min="0" max="1" step="0.05" /></label>
+          <div class="calib">
+            audio offset <button id="cminus">−</button><span id="calib">0 ms</span><button id="cplus">+</button
+            ><button id="cbt" class="wide" title="Bluetooth headphones lag about 170 ms">BT</button>
+          </div>
+          <button class="btn ghost" id="tocalib">audio sync</button>
+        </section>
+        <section>
+          <h3>language</h3>
+          <div class="langs" id="slang"></div>
+        </section>
+        <section class="more">
+          <button class="btn ghost" id="install" hidden>install</button>
+          <p class="tag" id="iosinstall" hidden>to install: Share, then Add to Home Screen</p>
+          <form class="link" id="linkform">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"
+              /></svg
+            ><input
+              id="link"
+              type="url"
+              inputmode="url"
+              placeholder="a link to a song"
+              aria-label="a link to a song"
+            /><button class="btn small" type="submit">▶</button>
+          </form>
+        </section>
+      </div>
+      <div class="setsdone"><button class="btn main" id="settingsok">done</button></div>
+    </section>
+    <section class="screen" id="calibrate" hidden>
+      <h2 class="title">calibrate</h2>
+      <p class="tag">tap (or press space) on every click. headphones on, as you will play.</p>
+      <div class="eyes big" id="ceyes"><i></i><i></i></div>
+      <p id="cstatus">ready</p>
+      <div class="btns">
+        <button class="btn main" id="cstart">start</button><button class="btn ghost" id="cback">back</button>
+      </div>
+    </section>
+    <section class="screen" id="loading" hidden>
+      <div class="eyes"><i></i><i></i></div>
+      <p id="loadtxt">reading the song…</p>
+      <div class="bar"><div id="loadbar"></div></div>
+      <!-- the first song on a touch screen: how to play it, picked while it loads (main.js pickControls) -->
+      <div class="ctlpick" id="ctlpick" hidden>
+        <h3>how do you want to play?</h3>
+        <div class="ctlopts">
+          <button data-v="auto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20v-9M12 11l-3 3M12 11l3 3M6 5h12M15 2l3 3-3 3" /></svg
+            ><b>swipes</b><small>swipe up, down, left, right</small></button
+          ><button data-v="buttons">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3" /><circle cx="10" cy="9" r="3" /><circle cx="18" cy="17" r="3" /><circle cx="14" cy="9" r="3" /></svg
+            ><b>buttons</b><small>four buttons on the screen</small></button>
+        </div>
+        <small>you can change it in the settings</small>
+      </div>
+    </section>
+    <section class="screen" id="game" hidden></section>
+    <!-- the results: a panel beside the run's last picture (the fall, or the finish) -->
+    <section class="screen" id="result" hidden>
+      <div class="deck rdeck">
+        <h2 id="rtitle"></h2>
+        <p id="rsub"></p>
+        <div class="np">
+          <span class="npart"></span>
+          <div class="nptxt"><b class="nptitle"></b><span class="npartist"></span></div>
+          <button class="npshare" aria-label="copy the song's link" title="copy the song's link">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" /></svg
+            ><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg>
+          </button>
+          <button class="like" aria-label="like"></button>
+        </div>
+        <div class="rnums">
+          <div id="rrank" hidden></div>
+          <div id="rstars"></div>
+          <div id="rscore"></div>
+        </div>
+        <canvas id="rgraph" width="640" height="90"></canvas>
+        <p id="rstats"></p>
+        <a id="rcredit" target="_blank" rel="noopener" hidden></a>
+        <p id="rsay"></p>
+        <div id="rnews"></div>
+        <div id="rperks"></div>
+        <button class="btn big" id="rnext" hidden>
+          <span class="ring"><span class="cnt"></span></span
+          ><span class="nx"><small>next</small><b class="nxt"></b></span
+          ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l9 7-9 7zM18 5v14" /></svg>
+        </button>
+        <div class="btns">
+          <button class="btn main big" id="retry">↻ again</button><button class="btn ghost" id="share">share</button
+          ><button class="btn ghost" id="challenge" hidden>challenge a friend</button
+          ><button class="btn ghost" id="tomenu">☰ songs</button>
+        </div>
+        <p class="qline" id="rqueue"></p>
+      </div>
+    </section>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
