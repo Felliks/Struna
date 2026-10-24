@@ -31,7 +31,8 @@ export function composeWorld(base, seed, P, marks, forced = {}, boost = null, pa
     // (an artist's pack's parts are the artist's alone: never in a song of another, so no crocodile sky or fly agarics
     // in anyone else's world; in its artist's song they lead, and a part of none of the pack's tags is much less likely
     // there)
-    parts = slot => partsOf(slot).filter(p => !p.pack || p.pack === pack),
+    // (a part kept out of new worlds, `retired`, is still drawn where a world names it)
+    parts = slot => partsOf(slot).filter(p => (!p.pack || p.pack === pack) && !p.retired),
     lean = p => (p.pack ? 4 : !boost ? 1 : kin(p.tags, boost) ? 1 + 3 * kin(p.tags, boost) : 0.08),
     w = (p, wild) => weight(p, world, P, wild) * (p.place ? 1 : PACK) * lean(p),
     others = (slot, but = []) => parts(slot).filter(p => p.place !== base && !but.includes(p.id)),

@@ -626,7 +626,7 @@ export const BACK = new Set(['duo', 'gameboy', 'kaleido', 'watercolor', 'fisheye
 const inSource = f => f.run.source && f.t < f.run.source.t1 && f.t >= f.run.source.t0;
 // (a drop: the song's lens for it (its signature on the first, a second set against it on the next, and round), cut in hard
 // on the drop's first beat and held one phrase: eight bars, sixteen where the drop runs to twenty-four; let go over the
-// phrase's last beat. Stronger drop by drop (Rez's layers): about 60% on the first, all of it on the last. Over the two
+// phrase's last beat. Stronger drop by drop (Rez's layers): 85% on the first, all of it on the last. Over the two
 // beats before a drop it shows through faintly, a hint of what is coming)
 function lensAtNow(f) {
   if (inSource(f)) return { name: 'matrix', k: 1 };
@@ -637,7 +637,8 @@ function lensAtNow(f) {
     name = list[s.k % list.length];
   if (!name) return null;
   const beat = f.run.L.A.beat,
-    grow = 0.6 + 0.4 * (s.n > 1 ? s.k / (s.n - 1) : 1);
+    // (the first drop already near full: a drop is where the world goes off, the first one too)
+    grow = 0.85 + 0.15 * (s.n > 1 ? s.k / (s.n - 1) : 1);
   if (s.kind === 'pre') return { name, k: 0.35 * grow * (1 - -s.since / (2 * beat)) };
   const hold = (s.len >= 24 * 4 * beat ? 16 : 8) * 4 * beat,
     end = Math.min(s.len, hold);

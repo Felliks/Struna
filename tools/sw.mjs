@@ -8,7 +8,7 @@ const D = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'),
   files = [];
 const walk = d => {
   for (const f of fs.readdirSync(d)) {
-    if (f.startsWith('.') || f === 'tools' || f === 'node_modules') continue;
+    if (f.startsWith('.') || f === 'tools' || f === 'node_modules' || f === 'assets') continue;
     const p = path.join(d, f);
     fs.statSync(p).isDirectory() ? walk(p) : files.push(path.relative(D, p));
   }

@@ -655,6 +655,8 @@ registerPart({
 registerPart({
   id: 'pixel',
   slot: 'performer',
+  // (the owner's least liked look, pixels and 8-bit: no longer picked for a world)
+  retired: true,
   media: ['air', 'space', 'water'],
   tags: ['party', 'tech', 'urban'],
   mood: [0.65, 0.7, 0.4],

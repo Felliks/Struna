@@ -1,5 +1,9 @@
 # Struna
 
+![Struna: a stick figure runs a neon world, obstacles and notes on the beats of a song](icons/og.jpg)
+
+<p align="center"><img src="assets/preview.gif" alt="Struna gameplay: the hero runs, jumps and fights on the beat as the song's drop hits" width="720"></p>
+
 A free rhythm runner in the browser where the song builds the world. Put on a song you love, and the game listens to it
 and grows a whole place out of it: the world, the sky, the weather, the pace and every obstacle, each one landing on a
 beat. A calm track is a quiet city at night; a heavy drop and everything goes wild around you. Then you run it.

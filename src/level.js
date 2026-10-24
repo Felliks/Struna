@@ -34,6 +34,7 @@ import { character } from './character.js';
 import { LASTING, PROPS, STAR_RATE, starKind, starPlan } from './stars.js';
 import { AIM_Y, themeOf } from './props.js';
 import { artistDress, dressLevel, guestDress } from './world/artists.js';
+import { refineDrops } from './structure.js';
 
 // (an island of a ladder starts that far before where he touches down on it: his landing spot by its lip, so tucked
 // into the roll too soon in the air he comes down short of it, run.js)
@@ -69,6 +70,8 @@ export function buildLevel(A, { difficulty = 'normal', ml = null, place: forcePl
     // how the song feels (profile.js); the mood the rest of the level reads: dark (low valence) and tense (aroused)
     P = profile(A, ml),
     mood = { dark: 1 - P.valence, tense: P.arousal };
+  // (the drops moved to where their bass comes in, once the song's feel is read: structure.js)
+  refineDrops(A);
   // each bar's intensity on an absolute scale: a chill song's loudest bar stays gentle (profile.js)
   for (const b of bars) b.intensity = intensityOf(P, b);
   // the cursor's temper: tense music, a twitchy, quick cursor

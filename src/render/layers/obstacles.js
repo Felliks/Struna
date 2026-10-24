@@ -310,19 +310,6 @@ function ring(f, o, X, Y, a) {
 
 // (every obstacle's look is outlined in black where it is drawn (things/index.js), so it reads on any background)
 // (in a blackout, dim but for their beat: modes.js)
-// the level's obstacles in the order they are drawn (worked out once a level: its list never changes)
-const ORDER = new WeakMap();
-function drawOrder(L) {
-  let order = ORDER.get(L);
-  if (order?.n === L.obs.length) return order;
-  const far = o => o.type === 'bat' || o.type === 'throw';
-  order = [];
-  for (let i = L.obs.length - 1; i >= 0; i--) if (far(L.obs[i])) order.push(L.obs[i]);
-  for (let i = L.obs.length - 1; i >= 0; i--) if (!far(L.obs[i])) order.push(L.obs[i]);
-  order.n = L.obs.length;
-  ORDER.set(L, order);
-  return order;
-}
 export function drawObstacles(f) {
   f.g.globalAlpha = blackoutAlpha(f);
   // (a flight: the place's things flying by, behind its rings)
@@ -375,9 +362,9 @@ function eachObstacle(f) {
     ghosts = L.mods?.includes('ghosts'),
     a0 = g.globalAlpha;
   // (the farthest ahead first, so what he meets sooner is drawn over it: a clone on its box further on stands behind the
-  // beam he is about to slide under, not over it; and before all of them, the throwers on their stands past the road
-  // (a bat's, a throw's): whenever their moment, they are further off than anything on it)
-  for (const o of drawOrder(L)) {
+  // beam he is about to slide under, not over it)
+  for (let i = L.obs.length - 1; i >= 0; i--) {
+    const o = L.obs[i];
     // (a gap is the roof's; a pane kicked through is in pieces; a stretch long gone is not on screen)
     if (
       o.res === 'skip' ||

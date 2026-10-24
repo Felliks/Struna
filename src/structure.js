@@ -96,6 +96,40 @@ export function songSections(bars) {
   return bars;
 }
 
+// a drop that hits after a silence starts on the hit (once per analysis, before the level is built from it: the same
+// for a song analysed here and one known ahead, whose curves are kept). The loudness of whole bars puts a drop on the
+// first bar that is loud all through, so a drop that comes out of a stop with a hit and leaves space after it (a
+// dubstep drop: Antagonist's at 33.9, a bar before its first full bar) came a bar late. Moved back a bar or two only to
+// a bar whose first beat hits the bass hard after two bars with next to no bass in them: a build with its kicks and
+// pickups in it (Cannibal's, its drop on the leap at 22.5) keeps the drop where the loudness leaps
+export function refineDrops(A) {
+  if (A.dropsRefined) return A;
+  A.dropsRefined = true;
+  const { bars, beat, fps } = A,
+    low = A.env?.low;
+  if (!low || !bars?.length) return A;
+  const mean = (a, b) => {
+    let s = 0,
+      k = 0;
+    for (let i = Math.max(0, Math.floor(a * fps)); i < Math.min(low.length, Math.floor(b * fps)); i++) (s += low[i]), k++;
+    return k ? s / k : 0;
+  };
+  for (let i = 2; i < bars.length; i++) {
+    if (!bars[i].dropStart) continue;
+    for (const j of [i - 1, i - 2]) {
+      if (j < 2 || bars[j].kind === 'drop' || bars[j - 1].kind === 'drop') continue;
+      const hit = mean(bars[j].t0, bars[j].t0 + beat),
+        before = mean(bars[j - 2].t0, bars[j].t0);
+      if (hit < 0.25 || before > 0.03) continue;
+      bars[i].dropStart = false;
+      bars[j].dropStart = true;
+      for (let k = j; k < i; k++) bars[k].kind = 'drop';
+      break;
+    }
+  }
+  return A;
+}
+
 // a DCT-II of a vector, coefficients 1..NC (the first, the loudness, left out: the timbre is the shape)
 function shape(v) {
   const n = v.length,

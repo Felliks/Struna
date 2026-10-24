@@ -32,11 +32,13 @@ export function makeFX(A, segs, finale = null) {
     beats = A.beats,
     downs = beats.filter((_, i) => i >= (A.bar0 ?? 0) && (i - (A.bar0 ?? 0)) % 4 === 0),
     drops = A.bars.filter(b => b.dropStart).map(b => b.t0),
-    // the run starts after a fall are drops too: he lands on them
-    lands = segs.filter((s, i) => s.kind === 'run' && i > 0).map(s => s.t0),
+    bar = A.beat * 4,
+    // the run starts after a fall are drops too when the music drops there: he lands on them (a landing anywhere else is
+    // his own impact, not the world going off: a drop's flash on a landing in a quiet intro or the middle of a loud part
+    // read as a drop that missed the music)
+    lands = segs.filter((s, i) => s.kind === 'run' && i > 0 && drops.some(d => Math.abs(d - s.t0) < bar)).map(s => s.t0),
     // (and the finale's smash)
-    allDrops = [...new Set([...drops, ...lands, ...(finale ? [finale.hit] : [])])].sort((a, b) => a - b),
-    bar = A.beat * 4;
+    allDrops = [...new Set([...drops, ...lands, ...(finale ? [finale.hit] : [])])].sort((a, b) => a - b);
   const imp = (B, t, rel) => {
     const i = lastIdx(B.t, t);
     return i < 0 ? 0 : B.s[i] * Math.exp(-(t - B.t[i]) / rel);

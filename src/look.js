@@ -103,14 +103,14 @@ const LANDMARKS = {
 // the lenses the song's simulation is rendered through (render/layers/lens.js), each at a point of [arousal, valence,
 // hardness] like the places (places.js MOOD); `back` ones lie over the background only (the action keeps its colours)
 const LENSES = {
-  pixel: [0.6, 0.6, 0.4], led: [0.75, 0.6, 0.6], vhs: [0.4, 0.35, 0.4], comic: [0.7, 0.7, 0.5], ascii: [0.7, 0.3, 0.6],
+  vhs: [0.4, 0.35, 0.4],
   thermal: [0.85, 0.3, 0.85], blueprint: [0.45, 0.55, 0.3], nightvision: [0.6, 0.15, 0.6], tron: [0.8, 0.45, 0.7], manga: [0.75, 0.5, 0.6],
   riso: [0.5, 0.75, 0.3], fisheye: [0.85, 0.6, 0.7], datamosh: [0.9, 0.25, 0.9], amber: [0.4, 0.25, 0.4],
 };
 // (a pack's place keeps to lenses of its kind: ink, tape and a two-tone over the black snow, light over the rave's
 // stones, tape and noise over the radio limbo)
-const PACK_LENSES = { blacksnow: ['manga', 'vhs', 'duo', 'comic', 'amber', 'riso'], holyrave: ['tron', 'kaleido', 'led', 'fisheye', 'pixel', 'comic'], apocradio: ['vhs', 'datamosh', 'duo', 'nightvision', 'amber', 'comic'], anthill: ['amber', 'kaleido', 'tron', 'thermal', 'duo', 'fisheye'], fujisan: ['watercolor', 'riso', 'manga', 'kaleido', 'duo', 'comic'], lastman: ['watercolor', 'riso', 'comic', 'kaleido', 'gameboy', 'amber'], compost: ['thermal', 'watercolor', 'riso', 'duo', 'comic', 'amber'], crocsky: ['watercolor', 'kaleido', 'comic', 'duo', 'riso', 'thermal'] };
-const BACK_LENSES = { duo: [0.5, 0.4, 0.4], gameboy: [0.5, 0.7, 0.2], kaleido: [0.6, 0.75, 0.3], watercolor: [0.25, 0.6, 0.1] };
+const PACK_LENSES = { blacksnow: ['manga', 'vhs', 'duo', 'tron', 'amber', 'riso'], holyrave: ['tron', 'kaleido', 'fisheye', 'manga', 'thermal', 'datamosh'], apocradio: ['vhs', 'datamosh', 'duo', 'nightvision', 'amber', 'thermal'], anthill: ['amber', 'kaleido', 'tron', 'thermal', 'duo', 'fisheye'], fujisan: ['watercolor', 'riso', 'manga', 'kaleido', 'duo', 'amber'], lastman: ['watercolor', 'riso', 'thermal', 'kaleido', 'duo', 'amber'], compost: ['thermal', 'watercolor', 'riso', 'duo', 'kaleido', 'amber'], crocsky: ['watercolor', 'kaleido', 'fisheye', 'duo', 'riso', 'thermal'] };
+const BACK_LENSES = { duo: [0.5, 0.4, 0.4], kaleido: [0.6, 0.75, 0.3], watercolor: [0.25, 0.6, 0.1] };
 
 // a palette for hue h at a time of day
 function palette(P, h, time, jit) {
