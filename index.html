@@ -1429,6 +1429,33 @@
         text-align: center;
         font-size: 15px;
       }
+      /* the offer of a harder difficulty on the results */
+      .rup {
+        display: grid;
+        gap: 6px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 216, 74, 0.45);
+        background: rgba(255, 216, 74, 0.08);
+        text-align: center;
+      }
+      .rup[hidden] {
+        display: none;
+      }
+      .rup b {
+        font: 900 18px var(--display);
+        color: #ffd84a;
+      }
+      .rup small {
+        color: var(--dim);
+        font-size: 12px;
+      }
+      .rupbtns {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
       /* how to play (ui/controls-card.js): each move as its note in the run beside how it is pressed here; a row of four
          on a wide screen, two by two on a narrow one; the gestures drawn moving */
       .ctlcard {
@@ -4591,6 +4618,7 @@
             <div class="seg" id="sdiff">
               <button data-v="easy">easy</button><button data-v="normal">normal</button><button data-v="hard">hard</button>
             </div>
+            <small>easy: no lives, just the score</small>
           </div>
           <div class="row">
             <span>hints: what to press</span>
@@ -4693,6 +4721,12 @@
         </div>
         <canvas id="rgraph" width="640" height="90"></canvas>
         <p id="rstats"></p>
+        <!-- easy made look easy: normal offered, where misses cost lives (main.js offerHarder) -->
+        <div class="rup" id="rup" hidden>
+          <b>too easy?</b>
+          <small>on normal there are more obstacles, and misses cost lives</small>
+          <div class="rupbtns"><button class="btn main" id="rupyes">try normal</button><button class="btn ghost" id="rupno">stay on easy</button></div>
+        </div>
         <a id="rcredit" target="_blank" rel="noopener" hidden></a>
         <p id="rsay"></p>
         <div id="rnews"></div>

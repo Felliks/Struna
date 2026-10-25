@@ -4,7 +4,7 @@
 // sideways; 'swipe'; 'zones'; 'buttons': input.js, ui/pads.js; `ctlPicked` once the player has chosen them), easy chords (a touch gesture giving half a chord gives the whole) and the hints
 // of what to press ('auto': a known move's note drawn smaller; 'always': every note full; 'off': none; render/layers/hints.js).
 const KEY = 'sim.settings',
-  DEFAULTS = { music: 1, sfx: 0.8, effects: 0.6, difficulty: 'normal', calib: 0, preview: true, controls: 'auto', easyChords: true, haptics: 'full', hints: 'auto' };
+  DEFAULTS = { music: 1, sfx: 0.8, effects: 0.6, difficulty: 'easy', calib: 0, preview: true, controls: 'auto', easyChords: true, haptics: 'full', hints: 'auto' };
 
 export class Settings {
   constructor() {

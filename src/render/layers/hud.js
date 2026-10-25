@@ -64,16 +64,32 @@ export function drawHud(f) {
     col = hp > 0.5 ? '#3ddc84' : hp > 0.25 ? '#ffc93c' : '#ff3b4f',
     jolt = hit > 0 && hit < 0.3 ? (1 - hit / 0.3) * Math.sin(hit * 60) * 3 * d : 0;
   icon(g, 'heart', pad + 8 * d + jolt, pad + hh / 2, 20 * d, hit > 0 && hit < 0.15 ? '#ffffff' : low ? '#ff3b4f' : '#ff5a7a', { pulse: low ? Math.abs(Math.sin(t * 9)) : mf.kick });
-  g.fillStyle = 'rgba(0,0,0,0.5)';
-  g.fillRect(bx, pad, hw, hh);
-  g.fillStyle = col;
-  g.fillRect(bx, pad, hw * hp, hh);
-  const lives = Math.max(1, Math.round(100 / (R.L.difficulty?.hit ?? 25)));
-  g.fillStyle = 'rgba(0,0,0,0.6)';
-  for (let i = 1; i < lives; i++) g.fillRect(bx + (hw * i) / lives - d, pad, 2 * d, hh);
-  g.strokeStyle = '#fff';
-  g.lineWidth = 1.5 * d;
-  g.strokeRect(bx, pad, hw, hh);
+  if (R.L.difficulty?.endless && !R.L.mods?.includes('onelife')) {
+    // (easy: no lives to count, an infinity drawn by the heart, beating with it)
+    const cx = bx + 16 * d,
+      cy = pad + hh / 2,
+      a = 8 * d * (1 + 0.08 * mf.kick);
+    g.strokeStyle = '#ff5a7a';
+    g.lineWidth = 2.5 * d;
+    g.beginPath();
+    for (let k = 0; k <= 48; k++) {
+      const u = (k / 48) * Math.PI * 2,
+        den = 1 + Math.sin(u) ** 2;
+      g[k ? 'lineTo' : 'moveTo'](cx + (a * 1.6 * Math.cos(u)) / den, cy + (a * Math.sin(u) * Math.cos(u)) / den);
+    }
+    g.stroke();
+  } else {
+    g.fillStyle = 'rgba(0,0,0,0.5)';
+    g.fillRect(bx, pad, hw, hh);
+    g.fillStyle = col;
+    g.fillRect(bx, pad, hw * hp, hh);
+    const lives = Math.max(1, Math.round(100 / (R.L.difficulty?.hit || 25)));
+    g.fillStyle = 'rgba(0,0,0,0.6)';
+    for (let i = 1; i < lives; i++) g.fillRect(bx + (hw * i) / lives - d, pad, 2 * d, hh);
+    g.strokeStyle = '#fff';
+    g.lineWidth = 1.5 * d;
+    g.strokeRect(bx, pad, hw, hh);
+  }
   g.textAlign = 'right';
   g.fillStyle = '#fff';
   // (the text at one size and the jump made by scaling it: a font size that moves with the music makes the browser draw

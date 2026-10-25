@@ -1026,6 +1026,33 @@ function play() {
   raf = requestAnimationFrame(loop);
 }
 
+// a player who has it on easy (no lives) is offered normal (misses cost lives) on the results: a song made with nine in
+// ten moves hit and three in four on the beat or near; once declined, offered again only after three more such songs
+function offerHarder(r) {
+  const el = $('#rup'),
+    judged = r.counts.perfect + r.counts.great + r.counts.good + r.counts.miss,
+    good = judged >= 20 && r.over.win && r.counts.miss <= 0.1 * judged && r.counts.perfect + r.counts.great >= 0.75 * judged;
+  el.hidden = true;
+  if (BOT || teach || settings.get('difficulty') !== 'easy' || !good) return;
+  const wait = settings.get('upWait') ?? 0;
+  if (wait > 0) return settings.set('upWait', wait - 1);
+  el.hidden = false;
+  track('harder_offered', { miss: r.counts.miss, judged });
+  $('#rupyes').onclick = () => {
+    settings.set('difficulty', 'normal');
+    track('harder_taken', {});
+    el.hidden = true;
+    // (the same song again, built anew at normal: a level is built at its difficulty)
+    const lyrics = level.lyrics;
+    level = make(current, level.key);
+    level.lyrics = lyrics;
+    play();
+  };
+  $('#rupno').onclick = () => {
+    settings.set('upWait', 3);
+    el.hidden = true;
+  };
+}
 function finish() {
   keepAwake(false);
   haptics.stop();
@@ -1041,6 +1068,7 @@ function finish() {
     isBest = r.over.win && r.score > (best[current.title] ?? 0);
   if (isBest) store.set('sim.best', { ...best, [current.title]: r.score });
   showResults(r, level, current.title, isBest);
+  offerHarder(r);
   // (what the run adds to the map, and the cursor's last word)
   const ch = level.ch,
     rec = meta.record({ key: level.key, title: current.title, artist: current.artist, link: current.link, style: level.profile.style, place: level.place, lens: R.look?.lens ?? null, hue: Math.round(R.look?.hue ?? 0), sign: ch.sign, sector: ch.sector, secret: !!level.secret, boss: level.boss?.name ?? ch.boss, win: r.over.win, score: r.score, stars: starsFor(r), miss: r.counts.miss, t: r.t, secretFound: !!r.secretT, bossDown: !!level.boss && r.bossHits >= level.boss.hp, hardRoute: Object.values(r.routes).includes('hard'), eggs: ch.eggs, inputs: r.over.win && !BOT ? inputs : null });
