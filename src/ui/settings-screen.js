@@ -9,6 +9,7 @@ export function applySettings(S, { song, sfx, renderer }) {
   song.volume = S.get('music');
   sfx.volume = S.get('sfx');
   renderer.effects = S.get('effects');
+  renderer.plain = !!S.get('plain');
   song.setCalib(S.get('calib'));
 }
 
@@ -38,6 +39,10 @@ export function bindSettings(S, targets, onDone, onLang) {
       }),
   );
   $('#seasy').onchange = e => S.set('easyChords', e.target.checked);
+  $('#splain').onchange = e => {
+    S.set('plain', e.target.checked);
+    applySettings(S, targets);
+  };
   // (it used to be on or off)
   const buzz = () => document.querySelectorAll('#shaptics button').forEach(b => b.classList.toggle('on', b.dataset.v === ({ true: 'full', false: 'off' }[S.get('haptics')] ?? S.get('haptics'))));
   document.querySelectorAll('#shaptics button').forEach(
@@ -84,6 +89,7 @@ export function bindSettings(S, targets, onDone, onLang) {
     ctl();
     hints();
     $('#seasy').checked = S.get('easyChords');
+    $('#splain').checked = !!S.get('plain');
     buzz();
   };
 }

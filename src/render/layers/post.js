@@ -8,8 +8,13 @@ import { rgba } from '../util.js';
 
 export class Post {
   constructor(reduced) {
-    this.reduced = reduced;
+    // (no flashes or glitches with reduced motion asked for, or with the effects turned well down, renderer.js calm)
+    this.base = reduced;
+    this.calm = false;
+  }  get reduced() {
+    return this.base || this.calm;
   }
+
   reset() {}
   // (kept for the last two sizes: a step of the dynamic resolution and back does not make it anew)
   vignette(W, H) {

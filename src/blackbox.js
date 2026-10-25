@@ -83,6 +83,7 @@ export class BlackBox {
             };
           if (R.behind?.has(l)) R.behind.add(w);
           if (R.acting?.has(l)) R.acting.add(w);
+          if (R.plainOut?.has(l)) R.plainOut.add(w);
           return w;
         });
     R.world = timed(R.world, 'world');

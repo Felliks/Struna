@@ -110,6 +110,17 @@ export class Renderer {
     // world's front (its weather, the things passing close) goes under the lens with the rest of the world then
     this.acting = new Set([drawChaser, drawObstacles, drawSecretDoor, kos, drawFinale, drawAura, hero, held, drawCursor, particles, pixels]);
     this.lensWorld = lens(false);
+    // (the background off, settings 'plain': the sky a plain gradient of the song's colours, none of the place's rows,
+    // landmarks, weather, sky events or the singer behind; the boss, the lyrics, the roofs and all he must read kept)
+    this.plainOut = new Set([drawAnomaly, drawSecretSky, evolve, drawVoice, skyEvents, drawTunnel, drawWarp, drawPerformer, weatherBack, drawSongWave, drawBack, drawBuild, weatherFront, drawFore]);
+    this.plainSky = f => {
+      const { g, v, T } = f,
+        gr = g.createLinearGradient(0, 0, 0, v.H);
+      gr.addColorStop(0, T.sky[0]);
+      gr.addColorStop(1, T.sky[2]);
+      g.fillStyle = gr;
+      g.fillRect(-v.W, -v.H, v.W * 3, v.H * 3);
+    };
     this.behind = new Set([drawSky, drawAnomaly, drawSecretSky, drawTunnel, drawSongWave, evolve, drawVoice, skyEvents, drawPerformer, drawBoss, weatherBack, drawBack, weatherFront]);
     this.mirror = new Mirror();
     // (the world's picture held on a big blow after the mirror, so the screen's effects over it, his keyline, the impact
@@ -118,6 +129,12 @@ export class Renderer {
     this.resize();
     addEventListener('resize', () => this.resize());
     this.reset();
+  }
+  // a layer of the world drawn, or with the background off (settings 'plain') left out or drawn plain
+  layer(fn, f) {
+    if (!this.plain) return fn(f);
+    if (fn === this.world[0]) return this.plainSky(f);
+    if (!this.plainOut.has(fn)) fn(f);
   }
   resize() {
     // (the backing store at the screen's pixels (at most 2 per CSS pixel) times the resolution scale: a device that
@@ -571,6 +588,8 @@ export class Renderer {
     // (the music decides when and how hard, the field (physics.js) how: each punch taken up over about 50 ms, never in
     // one frame, the music's zoom all told never past 8 %; the camera's every motion gone with the effects setting at 0
     // or reduced motion asked for, km)
+    // (the effects turned well down: no flashes, negative frames or glitches either, as with reduced motion)
+    this.post.calm = this.glitch.calm = this.effects < 0.35;
     const k = this.effects * (this.reduced ? 0.3 : 1),
       km = this.reduced ? 0 : this.effects,
       rx = lk.react * k,
@@ -678,13 +697,13 @@ export class Renderer {
     }
     if (!f.lensed) {
       this.lensWorld(f);
-      for (const layer of this.world) layer(this.behind.has(layer) ? fw : f);
+      for (const layer of this.world) this.layer(layer, this.behind.has(layer) ? fw : f);
     } else {
       // (the world, its front too, under the lens; then what he must read over it on a canvas of its own, in the frame's
       // transform as it stood, and laid on with the lens's ink round it)
       const T0 = g.getTransform(),
         a0 = g.globalAlpha;
-      for (const layer of this.world) if (!this.acting.has(layer)) layer(this.behind.has(layer) ? fw : f);
+      for (const layer of this.world) if (!this.acting.has(layer)) this.layer(layer, this.behind.has(layer) ? fw : f);
       g.setTransform(1, 0, 0, 1, 0, 0);
       this.lensWorld(f);
       const A = this.actLayer(g);

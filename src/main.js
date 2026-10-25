@@ -1478,6 +1478,7 @@ function showPause() {
   $('#pause .npbar i').style.width = `${((t / dur) * 100).toFixed(1)}%`;
   $('#pause .nptime').textContent = `${mmss(t)} / ${mmss(dur)}`;
   $('#pnext').hidden = !nx;
+  pauseLooks();
   $('#ppads').hidden = controls() !== 'buttons';
   $('#pqueue').textContent = nx ? l10n('next: {title}', { title: nx.title }) : '';
   $('#presume').focus({ preventScroll: true });
@@ -1512,6 +1513,24 @@ $('#pausebtn').onclick = e => {
   pauseGame();
 };
 $('#presume').onclick = resumeGame;
+// the effects and the background, turned down from the pause (the first thing a player wants when it is too much)
+const FX = [1, 0.6, 0.25, 0],
+  pauseLooks = () => {
+    $('#pfxv').textContent = `${Math.round(settings.get('effects') * 100)}%`;
+    $('#pbgv').textContent = l10n(settings.get('plain') ? 'off' : 'on');
+  };
+$('#pfx').onclick = () => {
+  const e = settings.get('effects'),
+    i = FX.findIndex(x => x < e - 0.01);
+  settings.set('effects', FX[i < 0 ? 0 : i]);
+  applySettings(settings, targets);
+  pauseLooks();
+};
+$('#pbg').onclick = () => {
+  settings.set('plain', !settings.get('plain'));
+  applySettings(settings, targets);
+  pauseLooks();
+};
 // the buttons placed from the pause, over the run held behind them; the pause back after
 $('#ppads').onclick = () => {
   $('#pause').hidden = true;

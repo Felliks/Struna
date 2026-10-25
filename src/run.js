@@ -204,11 +204,15 @@ function loneUp(R, o, t) {
 const WALL = 1.6;
 // a drop's landing out of a shaft (a slam down, a burst up): its key pressed up to `near` either side of its beat, or
 // held down through it; judged as soon as it is pressed, a miss only once the window is past
+// (a landing out of a shaft is hard to time by eye: the world rushing by, the camera catching up; its window is half
+// again as wide, more so before the touch, where a player presses as he sees the roof coming)
 function landed(R, o, t, key) {
-  if (t < o.t - R.L.difficulty.near) return;
-  const near = R.L.difficulty.near;
-  if (R.presses.some(p => p.a === key && p.t > o.t - near && p.t < o.t + near) || (t >= o.t && R.held[key])) return ['pass'];
-  if (t > o.t + near) return ['hit'];
+  const near = R.L.difficulty.near,
+    early = 1.8 * near,
+    late = 1.4 * near;
+  if (t < o.t - early) return;
+  if (R.presses.some(p => p.a === key && p.t > o.t - early && p.t < o.t + late) || (t >= o.t && R.held[key])) return ['pass'];
+  if (t > o.t + late) return ['hit'];
 }
 // after a hit: what happens to him (a gap: the simulation takes him out and puts him back on its far side, a glitch, and
 // he runs on; nothing holds him over the hole meanwhile)

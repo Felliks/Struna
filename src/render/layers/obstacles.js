@@ -310,6 +310,19 @@ function ring(f, o, X, Y, a) {
 
 // (every obstacle's look is outlined in black where it is drawn (things/index.js), so it reads on any background)
 // (in a blackout, dim but for their beat: modes.js)
+// the level's obstacles in the order they are drawn (worked out once a level: its list never changes)
+const ORDER = new WeakMap();
+function drawOrder(L) {
+  let order = ORDER.get(L);
+  if (order?.n === L.obs.length) return order;
+  const far = o => o.type === 'bat' || o.type === 'throw';
+  order = [];
+  for (let i = L.obs.length - 1; i >= 0; i--) if (far(L.obs[i])) order.push(L.obs[i]);
+  for (let i = L.obs.length - 1; i >= 0; i--) if (!far(L.obs[i])) order.push(L.obs[i]);
+  order.n = L.obs.length;
+  ORDER.set(L, order);
+  return order;
+}
 export function drawObstacles(f) {
   f.g.globalAlpha = blackoutAlpha(f);
   // (a flight: the place's things flying by, behind its rings)
@@ -362,9 +375,9 @@ function eachObstacle(f) {
     ghosts = L.mods?.includes('ghosts'),
     a0 = g.globalAlpha;
   // (the farthest ahead first, so what he meets sooner is drawn over it: a clone on its box further on stands behind the
-  // beam he is about to slide under, not over it)
-  for (let i = L.obs.length - 1; i >= 0; i--) {
-    const o = L.obs[i];
+  // beam he is about to slide under, not over it; and before all of them, the throwers on their stands past the road
+  // (a bat's, a throw's): whenever their moment, they are further off than anything on it)
+  for (const o of drawOrder(L)) {
     // (a gap is the roof's; a pane kicked through is in pieces; a stretch long gone is not on screen)
     if (
       o.res === 'skip' ||
@@ -893,6 +906,31 @@ function drawOne(f, o) {
   const since = t - plan.placeT(o);
   // a corridor of panes: each standing till he dashes through it (or all of them, once he has hit one)
   if (o.type === 'dash') {
+    // (one move, held through all its panes, not a kick for each: a lit track on the roof from before the first pane to
+    // past the last, its chevrons running on through them on the beat, in the kick's colour; gone once he is through)
+    if (!o.res || t < o.t + o.dur) {
+      const { g, mf, L } = f,
+        m = v.ppm,
+        a = o.panes[0] - 1.2,
+        b = o.panes.at(-1) + 0.8,
+        y = v.sy(o.y),
+        col = '#ff8a3d',
+        run = (t / L.A.beat) % 1;
+      g.save();
+      g.fillStyle = rgba(col, 0.22 + 0.18 * mf.beat);
+      g.fillRect(v.sx(a), y - 0.12 * m, (b - a) * m, 0.12 * m);
+      g.strokeStyle = rgba(col, 0.75);
+      g.lineWidth = 0.07 * m;
+      g.lineJoin = 'round';
+      for (let x = a + run * 0.8; x < b - 0.2; x += 0.8) {
+        g.beginPath();
+        g.moveTo(v.sx(x), y - 0.3 * m);
+        g.lineTo(v.sx(x + 0.22), y - 0.18 * m);
+        g.lineTo(v.sx(x), y - 0.06 * m);
+        g.stroke();
+      }
+      g.restore();
+    }
     for (const [i, px] of o.panes.entries()) {
       if (o.broke[i] && o.res !== 'hit') continue;
       drawThing(f, { ...o, type: 'smash' }, v.sx(px), v.sy(o.y), {

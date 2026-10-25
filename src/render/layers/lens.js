@@ -637,8 +637,9 @@ function lensAtNow(f) {
     name = list[s.k % list.length];
   if (!name) return null;
   const beat = f.run.L.A.beat,
-    // (the first drop already near full: a drop is where the world goes off, the first one too)
-    grow = 0.85 + 0.15 * (s.n > 1 ? s.k / (s.n - 1) : 1);
+    // (the first drop already near full: a drop is where the world goes off, the first one too; as strong as the
+    // player's effects setting allows, a third of it at the lowest, never gone: it is the song's look)
+    grow = (0.85 + 0.15 * (s.n > 1 ? s.k / (s.n - 1) : 1)) * (0.35 + 0.65 * (f.effects ?? 1));
   if (s.kind === 'pre') return { name, k: 0.35 * grow * (1 - -s.since / (2 * beat)) };
   const hold = (s.len >= 24 * 4 * beat ? 16 : 8) * 4 * beat,
     end = Math.min(s.len, hold);

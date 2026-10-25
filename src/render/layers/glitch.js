@@ -8,8 +8,13 @@ import { rgba } from '../util.js';
 
 export class Glitch {
   constructor(reduced) {
-    this.reduced = reduced;
+    // (no flashes or glitches with reduced motion asked for, or with the effects turned well down, renderer.js calm)
+    this.base = reduced;
+    this.calm = false;
+  }  get reduced() {
+    return this.base || this.calm;
   }
+
   draw(f) {
     if (this.reduced) return;
     const { g, v, t, mf, run: R } = f,

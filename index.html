@@ -3666,6 +3666,11 @@
       .dbtns button[hidden] {
         display: none;
       }
+      .dbtns button small {
+        margin-top: -4px;
+        color: var(--dim);
+        font: 700 10px var(--mono);
+      }
       .dbtns button:hover {
         background: rgba(255, 255, 255, 0.1);
       }
@@ -4107,6 +4112,12 @@
           ><button id="pmenu">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg
             ><span>songs</span></button
+          ><button id="pfx">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6" /></svg
+            ><span>effects</span><small id="pfxv"></small></button
+          ><button id="pbg">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 15l5-5 4 4 3-3 6 6" /></svg
+            ><span>background</span><small id="pbgv"></small></button
           ><button id="pbug">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M8 8a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0zM12 10v8M4 9l4 2M20 9l-4 2M3 15h5M16 15h5M5 21l3-3M19 21l-3-3" /></svg
@@ -4358,8 +4369,12 @@
             </div>
           </div>
           <label
-            >effects <small>shake, zoom, strobes</small><input type="range" id="seffects" min="0" max="1" step="0.05"
+            >effects <small>shake, zoom, strobes, flashes</small><input type="range" id="seffects" min="0" max="1" step="0.05"
           /></label>
+          <label class="check"
+            ><input type="checkbox" id="splain" /> background off
+            <small>only the road, him and what is in his way: calmer, and faster on a slow device</small></label
+          >
         </section>
         <section>
           <h3>sound</h3>

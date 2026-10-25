@@ -23,6 +23,8 @@
 // shaft: `stepping` says which way, 'v' or 'h'), the finger is followed after its swipe: every STEP further along that
 // way is one more step (back the other way, a step back), so he goes where the finger goes. A mouse plays the
 // one-finger scheme.
+// A gamepad (the standard mapping), read each frame: the d-pad or the left stick as the arrows, A jump, B slide, X and
+// RB kick, LB kick behind, Y or RT the overdrive; a press stamped with the pad's own time of it, as a key's.
 // Keys (by physical key, e.code): Space / ArrowUp / W jump, ArrowDown / S slide, ArrowRight / D kick (falling: lane
 // right), ArrowLeft / A kick behind (falling: lane left); up also reaches for a bar or a line, Enter / Shift / E overdrive. Held keys are forgotten when the window
 // loses focus.
@@ -38,6 +40,9 @@ const MM = 96 / 25.4,
   // the neighbour is offered too
   AXIS = 25,
   EDGE = 12;
+// a gamepad's buttons (the standard mapping) and the left stick's directions -> actions
+const PAD = { 0: 'jump', 12: 'jump', 1: 'slide', 13: 'slide', 2: 'right', 5: 'right', 15: 'right', 4: 'left', 14: 'left', 3: 'sync', 7: 'sync' },
+  STICK = 0.55;
 const KEYS = {
   Space: 'jump',
   ArrowUp: 'jump',
@@ -210,8 +215,39 @@ export class Input {
       if (a !== 'sync' && ![...this.held].some(c => KEYS[c] === a)) this.push({ a: 'release', of: [a], t });
     }
   }
+  // the gamepads' presses and releases since the last look (each pad's buttons and stick as they were then)
+  gamepads() {
+    if (typeof navigator === 'undefined' || !navigator.getGamepads) return;
+    this.padWas ??= new Map();
+    for (const gp of navigator.getGamepads()) {
+      if (!gp?.connected) continue;
+      const was = this.padWas.get(gp.index) ?? new Set(),
+        now = new Set();
+      gp.buttons.forEach((b, i) => (b.pressed || b.value > 0.5) && PAD[i] && now.add(`b${i}`));
+      const [x = 0, y = 0] = gp.axes;
+      if (y < -STICK) now.add('up');
+      if (y > STICK) now.add('down');
+      if (x > STICK) now.add('fwd');
+      if (x < -STICK) now.add('back');
+      const act = k => (k[0] === 'b' ? PAD[+k.slice(1)] : { up: 'jump', down: 'slide', fwd: 'right', back: 'left' }[k]),
+        t = this.song.at(gp.timestamp || performance.now());
+      for (const k of now)
+        if (!was.has(k)) {
+          this.touch = false;
+          const a = act(k);
+          this.push(a === 'sync' ? { a, t } : { acts: [a], t });
+        }
+      for (const k of was)
+        if (!now.has(k)) {
+          const a = act(k);
+          if (a !== 'sync' && ![...now].some(q => act(q) === a)) this.push({ a: 'release', of: [a], t });
+        }
+      this.padWas.set(gp.index, now);
+    }
+  }
   // the gestures since the last call; a finger still in place past the decide time is a tap
   take() {
+    if (this.enabled) this.gamepads();
     const now = performance.now();
     for (const p of this.ps.values()) if (!p.g && (now - p.tp) / 1000 > DECIDE) this.tapOf(p);
     const out = this.events;
