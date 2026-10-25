@@ -13,6 +13,7 @@ import { screenSwap } from './render/layers/modes.js';
 import { Song } from './audio.js';
 import { Input } from './input.js';
 import { Pads } from './ui/pads.js';
+import { controlsCard, schemeNow } from './ui/controls-card.js';
 import { padEditor } from './ui/pads-edit.js';
 import { Bot } from './bot.js';
 import { record as rememberRun, remember } from './memory.js';
@@ -282,6 +283,12 @@ async function fromLink(url) {
 // the controls asked for once on a touch screen, while the first song loads: swipes or buttons; the song waits for the
 // answer (a player who set them in the settings, or has played with buttons, is not asked)
 let ctlAsk = null;
+// how to play on this device while the song loads (not while the player is still picking how to play)
+function showLoadCard() {
+  const el = $('#loadctl');
+  el.hidden = BOT || Q.has('probe') || !$('#ctlpick').hidden;
+  if (!el.hidden) controlsCard(el, schemeNow(input.touch, controls()), { big: true });
+}
 function pickControls() {
   const asked = settings.get('ctlPicked') || settings.get('controls') !== 'auto' || BOT || Q.has('probe') || !matchMedia('(pointer: coarse)').matches;
   if (asked) return Promise.resolve();
@@ -294,6 +301,7 @@ function pickControls() {
         track('controls_pick', { controls: b.dataset.v });
         $('#ctlpick').hidden = true;
         ctlAsk = null;
+        showLoadCard();
         res();
       };
   }));
@@ -310,6 +318,7 @@ async function start(tr, file, link, again = false) {
   $('#loadtxt').textContent = l10n('reading the song…');
   $('#loadbar').style.width = '0%';
   const picked = pickControls();
+  showLoadCard();
   const key = link ? `link:${link}` : file ? `file:${file.name}:${file.size}` : tr.file,
     // (read again the slow way: from the first pick)
     loadT0 = again && lap ? lap.t0 : performance.now(),
@@ -1479,6 +1488,7 @@ function showPause() {
   $('#pause .nptime').textContent = `${mmss(t)} / ${mmss(dur)}`;
   $('#pnext').hidden = !nx;
   pauseLooks();
+  controlsCard($('#pausectl'), schemeNow(input.touch, controls()));
   $('#ppads').hidden = controls() !== 'buttons';
   $('#pqueue').textContent = nx ? l10n('next: {title}', { title: nx.title }) : '';
   $('#presume').focus({ preventScroll: true });
