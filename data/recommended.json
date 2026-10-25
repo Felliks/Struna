@@ -13,7 +13,9 @@
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 18,
    "vibe": 65,
-   "pinned": true
+   "pinned": true,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "aNlkQ",
@@ -22,12 +24,14 @@
    "art": "https://audius-content-4.figment.io/content/QmPnucKpPZuKNzCYSChagGUenLgLTDp9esUJwW6sfKtFsR/480x480.jpg",
    "dur": 246,
    "url": "https://audius.co/clozeeofficial/mirage-247305",
-   "plays": 9904,
+   "plays": 9906,
    "why": "artist",
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 28,
    "vibe": 93,
-   "pinned": true
+   "pinned": true,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "Q02Mov4",
@@ -41,21 +45,24 @@
    "from": "OUTTAHISMIND",
    "hard": 52,
    "vibe": 75,
-   "pinned": true
+   "pinned": true,
+   "genre": "Electronic",
+   "mood": null
   },
   {
-   "id": "YoQp7",
-   "title": "ALEX & TOKYO ROSE - Antagonist ",
-   "artist": "ALEX",
-   "art": "https://v.monophonic.digital/content/Qmeh6RzJV3ntgqtTtt3x9mWDNiXgr9R8sGtQYmaqVqMdGx/480x480.jpg",
-   "dur": 332,
-   "url": "https://audius.co/alexdavid5on/alex-tokyo-rose-antagonist--152788",
-   "plays": 313,
-   "why": "liked",
-   "from": "Antagonist",
-   "hard": 63,
-   "vibe": 91,
-   "pinned": true
+   "id": "6xWxdrQ",
+   "title": "Gassing You Up",
+   "artist": "Daniel Allan",
+   "art": "https://audius-creator-12.theblueprint.xyz/content/QmfMfFAQucGLAwxLeAMZyA9sDBx6yJZQeRGbHqoMPgq5Ek/480x480.jpg",
+   "dur": 109,
+   "url": "https://audius.co/danielallan/gassing-you-up",
+   "plays": 18038,
+   "why": "artist",
+   "from": "OUTTAHISMIND",
+   "hard": 21,
+   "vibe": 85,
+   "genre": "Electronic",
+   "mood": "Fiery"
   },
   {
    "id": "Qbql9",
@@ -69,7 +76,9 @@
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 23,
    "vibe": 19,
-   "pinned": true
+   "pinned": true,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "ag4wa",
@@ -83,73 +92,9 @@
    "from": "The Chase (Rebūke Remix)",
    "hard": 34,
    "vibe": 60,
-   "pinned": true
-  },
-  {
-   "id": "R0N5z",
-   "title": "Hear Me",
-   "artist": "Mefjus",
-   "art": "https://audius-content-4.figment.io/content/QmSKHabcJWUC5HuxxMrMwwN1PfA3Dm3FuKeUUvUZCaQdZC/480x480.jpg",
-   "dur": 249,
-   "url": "https://audius.co/martinmefjus/hear-me",
-   "plays": 1272,
-   "why": "artist",
-   "from": "Sientelo",
-   "hard": 41,
-   "vibe": 97,
-   "pinned": true
-  },
-  {
-   "id": "6xWxdrQ",
-   "title": "Gassing You Up",
-   "artist": "Daniel Allan",
-   "art": "https://audius-creator-12.theblueprint.xyz/content/QmfMfFAQucGLAwxLeAMZyA9sDBx6yJZQeRGbHqoMPgq5Ek/480x480.jpg",
-   "dur": 109,
-   "url": "https://audius.co/danielallan/gassing-you-up",
-   "plays": 18038,
-   "why": "artist",
-   "from": "OUTTAHISMIND",
-   "hard": 21,
-   "vibe": 85
-  },
-  {
-   "id": "nolmL",
-   "title": "REZZ x Raito - Alien",
-   "artist": "Rezz",
-   "art": "https://v.monophonic.digital/content/QmeUaedhdp86M5AS6sgaJvoY5JFmbZvUzhyKxQns3MjN2i/480x480.jpg",
-   "dur": 228,
-   "url": "https://audius.co/OfficialRezz/rezz-x-raito-alien-1183",
-   "plays": 9355,
-   "why": "artist",
-   "from": "Someone Else",
-   "hard": 34,
-   "vibe": 78
-  },
-  {
-   "id": "LKAze",
-   "title": "Zeds Dead X Jauz - Shake",
-   "artist": "Zeds Dead",
-   "art": "https://audius-01.staked.cloud/content/QmVxT2FGZ1EWUUggxgChHjTN5MfL61oth9iGBix7XvjaPA/480x480.jpg",
-   "dur": 278,
-   "url": "https://audius.co/zedsdead/zeds-dead-x-jauz-shake-1192",
-   "plays": 11888,
-   "why": "artist",
-   "from": "Save My Grave",
-   "hard": 29,
-   "vibe": 66
-  },
-  {
-   "id": "Ya9ZEJr",
-   "title": "Twin Snakes",
-   "artist": "ATTLAS",
-   "art": "https://audius-content-14.figment.io/content/baeaaaiqseaxubgboo5neukun67wo3t5idrobxiq7fzbp5gv7sk4sxc3ketbiw/480x480.jpg",
-   "dur": 192,
-   "url": "https://audius.co/attlas/twin-snakes",
-   "plays": 183,
-   "why": "artist",
-   "from": "Sinner Complicated",
-   "hard": 38,
-   "vibe": 84
+   "pinned": true,
+   "genre": "Electronic",
+   "mood": "Melancholy"
   },
   {
    "id": "bQ7rMEM",
@@ -162,7 +107,9 @@
    "why": "artist",
    "from": "OUTTAHISMIND",
    "hard": 44,
-   "vibe": 94
+   "vibe": 94,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "dRxav",
@@ -175,20 +122,9 @@
    "why": "artist",
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 24,
-   "vibe": 41
-  },
-  {
-   "id": "91Na2",
-   "title": "Lost In Space",
-   "artist": "Zeds Dead",
-   "art": "https://v.monophonic.digital/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
-   "dur": 113,
-   "url": "https://audius.co/zedsdead/lost-in-space-197255",
-   "plays": 4947,
-   "why": "artist",
-   "from": "Save My Grave",
-   "hard": 49,
-   "vibe": 99
+   "vibe": 41,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "xy8rX",
@@ -201,20 +137,9 @@
    "why": "artist",
    "from": "OUTTAHISMIND",
    "hard": 34,
-   "vibe": 62
-  },
-  {
-   "id": "JEPWz",
-   "title": "Gorilla",
-   "artist": "Zeds Dead",
-   "art": "https://val015.open-audio-validator.com/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
-   "dur": 233,
-   "url": "https://audius.co/zedsdead/gorilla-197251",
-   "plays": 4047,
-   "why": "artist",
-   "from": "Save My Grave",
-   "hard": 47,
-   "vibe": 90
+   "vibe": 62,
+   "genre": "Electronic",
+   "mood": "Cool"
   },
   {
    "id": "q4Jm3MM",
@@ -227,7 +152,9 @@
    "why": "artist",
    "from": "Reliquia (Original Mix)",
    "hard": 44,
-   "vibe": 72
+   "vibe": 72,
+   "genre": "Vaporwave",
+   "mood": "Romantic"
   },
   {
    "id": "XO7MO",
@@ -240,7 +167,9 @@
    "why": "artist",
    "from": "The Chase (Rebūke Remix)",
    "hard": 25,
-   "vibe": 25
+   "vibe": 25,
+   "genre": "Pop",
+   "mood": "Sentimental"
   },
   {
    "id": "1O4gPv5",
@@ -253,7 +182,9 @@
    "why": "artist",
    "from": "Look At Me Now (prod. horse head)",
    "hard": 24,
-   "vibe": 22
+   "vibe": 22,
+   "genre": "Alternative",
+   "mood": "Melancholy"
   },
   {
    "id": "KVogl",
@@ -262,24 +193,13 @@
    "art": "https://audius.zeogrid.com/content/QmcVUd98U4tK3WUcvkP6Pwwxh58PTqjdaSqS4ARDB8cbL7/480x480.jpg",
    "dur": 159,
    "url": "https://audius.co/EmmitFenn/into-the-deep",
-   "plays": 39298,
+   "plays": 39299,
    "why": "artist",
    "from": "The Chase (Rebūke Remix)",
    "hard": 18,
-   "vibe": 3
-  },
-  {
-   "id": "b9KyQ",
-   "title": "Pham - Nostalgia",
-   "artist": "Pham",
-   "art": "https://audius-creator-5.theblueprint.xyz/content/QmTz1fxdrVLwhrE6pfYQR4zRvfkzJMtUJ9ZEev4KCq56D8/480x480.jpg",
-   "dur": 193,
-   "url": "https://audius.co/whoispham/pham-nostalgia-355303",
-   "plays": 28,
-   "why": "artist",
-   "from": "Movements",
-   "hard": 56,
-   "vibe": 87
+   "vibe": 3,
+   "genre": "Electronic",
+   "mood": "Melancholy"
   },
   {
    "id": "dypZP",
@@ -292,7 +212,9 @@
    "why": "artist",
    "from": "Amsterdamned",
    "hard": 52,
-   "vibe": 76
+   "vibe": 76,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "l480w",
@@ -305,20 +227,84 @@
    "why": "artist",
    "from": "The Chase (Rebūke Remix)",
    "hard": 32,
-   "vibe": 29
+   "vibe": 29,
+   "genre": "Electronic",
+   "mood": "Melancholy"
   },
   {
-   "id": "Pgj85",
-   "title": "Pham - Mirari",
-   "artist": "Pham",
-   "art": "https://cn3.mainnet.audiusindex.org/content/QmTz1fxdrVLwhrE6pfYQR4zRvfkzJMtUJ9ZEev4KCq56D8/480x480.jpg",
-   "dur": 163,
-   "url": "https://audius.co/whoispham/pham-mirari-355301",
-   "plays": 15,
+   "id": "R0N5z",
+   "title": "Hear Me",
+   "artist": "Mefjus",
+   "art": "https://audius-content-4.figment.io/content/QmSKHabcJWUC5HuxxMrMwwN1PfA3Dm3FuKeUUvUZCaQdZC/480x480.jpg",
+   "dur": 249,
+   "url": "https://audius.co/martinmefjus/hear-me",
+   "plays": 1273,
    "why": "artist",
-   "from": "Movements",
-   "hard": 39,
-   "vibe": 44
+   "from": "Sientelo",
+   "hard": 41,
+   "vibe": 97,
+   "genre": "Drum & Bass",
+   "mood": "Upbeat"
+  },
+  {
+   "id": "nolmL",
+   "title": "REZZ x Raito - Alien",
+   "artist": "Rezz",
+   "art": "https://v.monophonic.digital/content/QmeUaedhdp86M5AS6sgaJvoY5JFmbZvUzhyKxQns3MjN2i/480x480.jpg",
+   "dur": 228,
+   "url": "https://audius.co/OfficialRezz/rezz-x-raito-alien-1183",
+   "plays": 9357,
+   "why": "artist",
+   "from": "Someone Else",
+   "hard": 34,
+   "vibe": 78,
+   "genre": "Electronic",
+   "mood": "Energizing"
+  },
+  {
+   "id": "LKAze",
+   "title": "Zeds Dead X Jauz - Shake",
+   "artist": "Zeds Dead",
+   "art": "https://audius-01.staked.cloud/content/QmVxT2FGZ1EWUUggxgChHjTN5MfL61oth9iGBix7XvjaPA/480x480.jpg",
+   "dur": 278,
+   "url": "https://audius.co/zedsdead/zeds-dead-x-jauz-shake-1192",
+   "plays": 11888,
+   "why": "artist",
+   "from": "Save My Grave",
+   "hard": 29,
+   "vibe": 66,
+   "genre": "Electronic",
+   "mood": "Energizing"
+  },
+  {
+   "id": "91Na2",
+   "title": "Lost In Space",
+   "artist": "Zeds Dead",
+   "art": "https://v.monophonic.digital/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
+   "dur": 113,
+   "url": "https://audius.co/zedsdead/lost-in-space-197255",
+   "plays": 4947,
+   "why": "artist",
+   "from": "Save My Grave",
+   "hard": 49,
+   "vibe": 99,
+   "genre": "Dubstep",
+   "mood": "Gritty"
+  },
+  {
+   "id": "JEPWz",
+   "title": "Gorilla",
+   "artist": "Zeds Dead",
+   "art": "https://val015.open-audio-validator.com/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
+   "dur": 233,
+   "url": "https://audius.co/zedsdead/gorilla-197251",
+   "plays": 4047,
+   "why": "artist",
+   "from": "Save My Grave",
+   "hard": 47,
+   "vibe": 90,
+   "genre": "Dubstep",
+   "mood": "Gritty"
   },
   {
    "id": "Jb2k2",
@@ -331,7 +317,9 @@
    "why": "artist",
    "from": "Someone Else",
    "hard": 37,
-   "vibe": 37
+   "vibe": 37,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "aNzxr",
@@ -340,11 +328,13 @@
    "art": "https://val015.open-audio-validator.com/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
    "dur": 217,
    "url": "https://audius.co/zedsdead/voltage-197249",
-   "plays": 15175,
+   "plays": 15176,
    "why": "artist",
    "from": "Save My Grave",
    "hard": 56,
-   "vibe": 79
+   "vibe": 79,
+   "genre": "Dubstep",
+   "mood": "Gritty"
   },
   {
    "id": "AA58v",
@@ -357,7 +347,9 @@
    "why": "artist",
    "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
    "hard": 65,
-   "vibe": 100
+   "vibe": 100,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "DBpQn",
@@ -366,11 +358,13 @@
    "art": "https://audius-content-3.figment.io/content/Qmbs5zudXU745pp9QTRBuJfCmYFJxbfHkBvbbW4aeTT4b3/480x480.jpg",
    "dur": 230,
    "url": "https://audius.co/OfficialRezz/rezz-x-isqa-psycho-1186",
-   "plays": 26527,
+   "plays": 26529,
    "why": "artist",
    "from": "Someone Else",
    "hard": 39,
-   "vibe": 38
+   "vibe": 38,
+   "genre": "Electronic",
+   "mood": "Gritty"
   },
   {
    "id": "42OakZ0",
@@ -383,7 +377,9 @@
    "why": "liked",
    "from": "Psilocybin",
    "hard": 50,
-   "vibe": 63
+   "vibe": 63,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "B0zZQ",
@@ -396,7 +392,24 @@
    "why": "artist",
    "from": "Sinner Complicated",
    "hard": 37,
-   "vibe": 32
+   "vibe": 32,
+   "genre": "Electronic",
+   "mood": "Cool"
+  },
+  {
+   "id": "YoQp7",
+   "title": "ALEX & TOKYO ROSE - Antagonist ",
+   "artist": "ALEX",
+   "art": "https://v.monophonic.digital/content/Qmeh6RzJV3ntgqtTtt3x9mWDNiXgr9R8sGtQYmaqVqMdGx/480x480.jpg",
+   "dur": 332,
+   "url": "https://audius.co/alexdavid5on/alex-tokyo-rose-antagonist--152788",
+   "plays": 313,
+   "why": "liked",
+   "from": "Antagonist",
+   "hard": 63,
+   "vibe": 91,
+   "genre": "Alternative",
+   "mood": "Aggressive"
   },
   {
    "id": "Zk09216",
@@ -405,11 +418,13 @@
    "art": "https://audius-figment-1-validator-19.figment.io/content/01JZ3GJPKA9EJ145GTEQQKA5DN/480x480.jpg",
    "dur": 201,
    "url": "https://audius.co/NGHTMRE/nghtmre-sully-flowdan-up-top",
-   "plays": 18082,
+   "plays": 18084,
    "why": "artist",
    "from": "Like That",
    "hard": 59,
-   "vibe": 81
+   "vibe": 81,
+   "genre": "Drum & Bass",
+   "mood": "Energizing"
   },
   {
    "id": "QRyPWaV",
@@ -422,20 +437,9 @@
    "why": "artist",
    "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
    "hard": 46,
-   "vibe": 50
-  },
-  {
-   "id": "jNxbpNB",
-   "title": "Cleopatra",
-   "artist": "HUCCI",
-   "art": "https://audius-content-7.figment.io/content/01J2KPZ7FDQHHAESR66VP67FWX/480x480.jpg",
-   "dur": 229,
-   "url": "https://audius.co/olliehucci/cleopatra",
-   "plays": 201,
-   "why": "artist",
-   "from": "The Fall",
-   "hard": 48,
-   "vibe": 54
+   "vibe": 50,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "JE0x2",
@@ -448,7 +452,9 @@
    "why": "artist",
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 30,
-   "vibe": 10
+   "vibe": 10,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "1Owmz",
@@ -461,7 +467,9 @@
    "why": "liked",
    "from": "GOOD PUSS",
    "hard": 49,
-   "vibe": 53
+   "vibe": 53,
+   "genre": "Electronic",
+   "mood": "Upbeat"
   },
   {
    "id": "8ZPPrRv",
@@ -474,7 +482,9 @@
    "why": "artist",
    "from": "OUTTAHISMIND",
    "hard": 62,
-   "vibe": 82
+   "vibe": 82,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "x5dg3",
@@ -483,11 +493,13 @@
    "art": "https://audius-content-13.figment.io/content/QmeMU6AumA3kdqgxn42fGxBKzYHEEGYSWeBdLqqeYrbynu/480x480.jpg",
    "dur": 287,
    "url": "https://audius.co/attlas/the-night-air-was-cool-90231",
-   "plays": 162717,
+   "plays": 162720,
    "why": "artist",
    "from": "Sinner Complicated",
    "hard": 35,
-   "vibe": 18
+   "vibe": 18,
+   "genre": "Electronic",
+   "mood": "Stirring"
   },
   {
    "id": "W0oYv",
@@ -496,11 +508,13 @@
    "art": "https://v.monophonic.digital/content/QmYjVPCwMtSk8fRkByfRNoruj98EghgMHWSGtLDBjoVuFx/480x480.jpg",
    "dur": 238,
    "url": "https://audius.co/zedsdead/dark-side-dub-387508",
-   "plays": 11059,
+   "plays": 11065,
    "why": "artist",
    "from": "Save My Grave",
    "hard": 65,
-   "vibe": 88
+   "vibe": 88,
+   "genre": "Dubstep",
+   "mood": "Defiant"
   },
   {
    "id": "NQq74",
@@ -509,11 +523,13 @@
    "art": "https://audius-creator-14.theblueprint.xyz/content/QmQC75FMfGqGu3v4tphF2uHmzxWH3UbsVAJVhK7QKipZSi/480x480.jpg",
    "dur": 167,
    "url": "https://audius.co/onetruegod/one-true-god-x-le-castle-vania-bad-company",
-   "plays": 200,
+   "plays": 201,
    "why": "liked",
    "from": "Bad Company",
    "hard": 49,
-   "vibe": 47
+   "vibe": 47,
+   "genre": "Electronic",
+   "mood": "Defiant"
   },
   {
    "id": "x2oyq",
@@ -526,7 +542,9 @@
    "why": "artist",
    "from": "Sinner Complicated",
    "hard": 29,
-   "vibe": 0
+   "vibe": 0,
+   "genre": "Classical",
+   "mood": "Sentimental"
   },
   {
    "id": "PVmN0",
@@ -535,24 +553,13 @@
    "art": "https://val009.open-audio-validator.com/content/QmdzrFqkDYnubPH4EN2mavDM2XABcAjeMEhZ8aaL1bZTJJ/480x480.jpg",
    "dur": 395,
    "url": "https://audius.co/attlas/begotten",
-   "plays": 18222,
+   "plays": 18233,
    "why": "artist",
    "from": "Sinner Complicated",
    "hard": 44,
-   "vibe": 34
-  },
-  {
-   "id": "YJ5Br",
-   "title": "Pham - Lightning (feat. Reo Cragun)",
-   "artist": "Pham",
-   "art": "https://audius-creator-5.theblueprint.xyz/content/QmTz1fxdrVLwhrE6pfYQR4zRvfkzJMtUJ9ZEev4KCq56D8/480x480.jpg",
-   "dur": 225,
-   "url": "https://audius.co/whoispham/pham-lightning-feat.-reo-cragun-355300",
-   "plays": 55,
-   "why": "artist",
-   "from": "Movements",
-   "hard": 51,
-   "vibe": 49
+   "vibe": 34,
+   "genre": "Deep House",
+   "mood": "Melancholy"
   },
   {
    "id": "7Oq8A",
@@ -565,7 +572,9 @@
    "why": "artist",
    "from": "Shaking Things Up",
    "hard": 43,
-   "vibe": 26
+   "vibe": 26,
+   "genre": "Electronic",
+   "mood": "Easygoing"
   },
   {
    "id": "x5Ydw",
@@ -578,7 +587,9 @@
    "why": "artist",
    "from": "Sinner Complicated",
    "hard": 56,
-   "vibe": 56
+   "vibe": 56,
+   "genre": "Electronic",
+   "mood": "Gritty"
   },
   {
    "id": "oa4lwNR",
@@ -591,7 +602,9 @@
    "why": "artist",
    "from": "Labyrinth (CloZee Remix)",
    "hard": 35,
-   "vibe": 4
+   "vibe": 4,
+   "genre": "Electronic",
+   "mood": "Stirring"
   },
   {
    "id": "lZVKQ",
@@ -600,11 +613,13 @@
    "art": "https://val002.open-audio-validator.com/content/QmZnmNEXL37fwSsgeGyBpxQFDUrswjmpPXYWZ9qJLTuqPw/480x480.jpg",
    "dur": 240,
    "url": "https://audius.co/zedsdead/ice-crack-197250",
-   "plays": 4918,
+   "plays": 4919,
    "why": "artist",
    "from": "Save My Grave",
    "hard": 34,
-   "vibe": 1
+   "vibe": 1,
+   "genre": "Dubstep",
+   "mood": "Gritty"
   },
   {
    "id": "qPbJB",
@@ -613,11 +628,13 @@
    "art": "https://v.monophonic.digital/content/QmNdELxTJuc21XJmHZcqpJZRdFLy86etBtPcugb7RiwzT5/480x480.jpg",
    "dur": 145,
    "url": "https://audius.co/EkaliMusic/affinity-2015",
-   "plays": 25735,
+   "plays": 25736,
    "why": "artist",
    "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
    "hard": 37,
-   "vibe": 7
+   "vibe": 7,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "9RJ50",
@@ -630,7 +647,9 @@
    "why": "liked",
    "from": "Tel Aviv",
    "hard": 56,
-   "vibe": 51
+   "vibe": 51,
+   "genre": "Trap",
+   "mood": "Melancholy"
   },
   {
    "id": "97mKXG",
@@ -643,7 +662,9 @@
    "why": "artist",
    "from": "OUTTAHISMIND",
    "hard": 66,
-   "vibe": 74
+   "vibe": 74,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "vYE9K",
@@ -656,33 +677,9 @@
    "why": "artist",
    "from": "CloZee - ShambhaRoo Livestream 2020",
    "hard": 54,
-   "vibe": 46
-  },
-  {
-   "id": "5jzo1",
-   "title": "Pham - HateLove (feat. Anuka)",
-   "artist": "Pham",
-   "art": "https://v.monophonic.digital/content/QmTz1fxdrVLwhrE6pfYQR4zRvfkzJMtUJ9ZEev4KCq56D8/480x480.jpg",
-   "dur": 283,
-   "url": "https://audius.co/whoispham/pham-hatelove-feat.-anuka-355302",
-   "plays": 37,
-   "why": "artist",
-   "from": "Movements",
-   "hard": 65,
-   "vibe": 71
-  },
-  {
-   "id": "AKOYJqK",
-   "title": "TEARS",
-   "artist": "Brennan Savage",
-   "art": "https://audius-content-13.figment.io/content/Qmcc62cCBGGyCrHy7wRh9kBVRftuMGSFHKYtityP29qZXG/480x480.jpg",
-   "dur": 150,
-   "url": "https://audius.co/brennansavage/tears",
-   "plays": 189,
-   "why": "artist",
-   "from": "Look At Me Now (prod. horse head)",
-   "hard": 65,
-   "vibe": 69
+   "vibe": 46,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "3KvP0",
@@ -695,20 +692,9 @@
    "why": "artist",
    "from": "Look At Me Now (prod. horse head)",
    "hard": 42,
-   "vibe": 13
-  },
-  {
-   "id": "95k6A",
-   "title": "Pham - Golden State (feat. Ben Zaidi)",
-   "artist": "Pham",
-   "art": "https://v.monophonic.digital/content/QmTz1fxdrVLwhrE6pfYQR4zRvfkzJMtUJ9ZEev4KCq56D8/480x480.jpg",
-   "dur": 244,
-   "url": "https://audius.co/whoispham/pham-golden-state-feat.-ben-zaidi-355299",
-   "plays": 44,
-   "why": "artist",
-   "from": "Movements",
-   "hard": 43,
-   "vibe": 15
+   "vibe": 13,
+   "genre": "Alternative",
+   "mood": "Brooding"
   },
   {
    "id": "0gokV",
@@ -721,33 +707,9 @@
    "why": "liked",
    "from": "Kill Me With Your Love",
    "hard": 52,
-   "vibe": 35
-  },
-  {
-   "id": "2lX81",
-   "title": "Refute",
-   "artist": "ｎｉｍｉｎｏ",
-   "art": "https://cn1.mainnet.audiusindex.org/content/QmU5dbEtRTySuMnJoxXkhp5G1YR8gW9HfvafbAyeBc1CuV/480x480.jpg",
-   "dur": 297,
-   "url": "https://audius.co/niminomusic/refute-336134",
-   "plays": 109,
-   "why": "artist",
-   "from": "Shaking Things Up",
-   "hard": 41,
-   "vibe": 9
-  },
-  {
-   "id": "bp2O9EX",
-   "title": "Fool",
-   "artist": "Ekali 🥀",
-   "art": "https://audius-creator-17.theblueprint.xyz/content/01H41N3H830KY8JF9X11RJ073E/480x480.jpg",
-   "dur": 220,
-   "url": "https://audius.co/EkaliMusic/fool",
-   "plays": 210,
-   "why": "artist",
-   "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
-   "hard": 79,
-   "vibe": 96
+   "vibe": 35,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "2PbO4q3",
@@ -760,7 +722,9 @@
    "why": "liked",
    "from": "The Chase",
    "hard": 47,
-   "vibe": 21
+   "vibe": 21,
+   "genre": "Electronic",
+   "mood": null
   },
   {
    "id": "E0dqj6N",
@@ -773,7 +737,9 @@
    "why": "artist",
    "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
    "hard": 56,
-   "vibe": 40
+   "vibe": 40,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "3wNNxM",
@@ -782,11 +748,13 @@
    "art": "https://v.monophonic.digital/content/01K0FRSF872TWY35HHW2E5Z1V1/480x480.jpg",
    "dur": 167,
    "url": "https://audius.co/NGHTMRE/everybody-knows",
-   "plays": 10864,
+   "plays": 10870,
    "why": "artist",
    "from": "Like That",
    "hard": 70,
-   "vibe": 68
+   "vibe": 68,
+   "genre": "Dubstep",
+   "mood": "Cool"
   },
   {
    "id": "BqNxP",
@@ -799,7 +767,9 @@
    "why": "artist",
    "from": "Shaking Things Up",
    "hard": 54,
-   "vibe": 28
+   "vibe": 28,
+   "genre": "Electronic",
+   "mood": "Tender"
   },
   {
    "id": "q51Vb",
@@ -808,24 +778,13 @@
    "art": "https://v.monophonic.digital/content/QmdFNDpjsonHhQQwPGJX6NHoht2NNMTe4SXtuuGTRop3jX/480x480.jpg",
    "dur": 237,
    "url": "https://audius.co/EmmitFenn/moving-on-380829",
-   "plays": 33240,
+   "plays": 33241,
    "why": "artist",
    "from": "The Chase (Rebūke Remix)",
    "hard": 49,
-   "vibe": 16
-  },
-  {
-   "id": "PkyqVo0",
-   "title": "FOREVER",
-   "artist": "Brennan Savage",
-   "art": "https://val005.open-audio-validator.com/content/Qmcc62cCBGGyCrHy7wRh9kBVRftuMGSFHKYtityP29qZXG/480x480.jpg",
-   "dur": 154,
-   "url": "https://audius.co/brennansavage/forever",
-   "plays": 205,
-   "why": "artist",
-   "from": "Look At Me Now (prod. horse head)",
-   "hard": 55,
-   "vibe": 24
+   "vibe": 16,
+   "genre": "Pop",
+   "mood": "Sentimental"
   },
   {
    "id": "ZGpGg",
@@ -838,7 +797,9 @@
    "why": "artist",
    "from": "The Chase (Rebūke Remix)",
    "hard": 51,
-   "vibe": 12
+   "vibe": 12,
+   "genre": "Electronic",
+   "mood": "Energizing"
   },
   {
    "id": "jN34QRZ",
@@ -851,7 +812,9 @@
    "why": "artist",
    "from": "The Fall",
    "hard": 50,
-   "vibe": 6
+   "vibe": 6,
+   "genre": "Electronic",
+   "mood": "Peaceful"
   },
   {
    "id": "92VEg0M",
@@ -864,20 +827,9 @@
    "why": "artist",
    "from": "Like That",
    "hard": 61,
-   "vibe": 31
-  },
-  {
-   "id": "P7QbPp",
-   "title": "Python (w/ BLVDE RUNNER)",
-   "artist": "Ekali 🥀",
-   "art": "https://audius-creator-17.theblueprint.xyz/content/01H41N3H830KY8JF9X11RJ073E/480x480.jpg",
-   "dur": 234,
-   "url": "https://audius.co/EkaliMusic/python-w-blvde-runner",
-   "plays": 138,
-   "why": "artist",
-   "from": "Ekali & Elohim - Fairy Tale (Official Audio)",
-   "hard": 67,
-   "vibe": 43
+   "vibe": 31,
+   "genre": "Drum & Bass",
+   "mood": "Energizing"
   },
   {
    "id": "4a15y",
@@ -890,20 +842,9 @@
    "why": "artist",
    "from": "Look At Me Now (prod. horse head)",
    "hard": 74,
-   "vibe": 57
-  },
-  {
-   "id": "lJmwA5Q",
-   "title": "MIRROR",
-   "artist": "Brennan Savage",
-   "art": "https://audius-content-13.figment.io/content/Qmcc62cCBGGyCrHy7wRh9kBVRftuMGSFHKYtityP29qZXG/480x480.jpg",
-   "dur": 162,
-   "url": "https://audius.co/brennansavage/mirror",
-   "plays": 160,
-   "why": "artist",
-   "from": "Look At Me Now (prod. horse head)",
-   "hard": 75,
-   "vibe": 59
+   "vibe": 57,
+   "genre": "Alternative",
+   "mood": "Brooding"
   }
  ]
 }
